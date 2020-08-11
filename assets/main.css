@@ -1,0 +1,64 @@
+/* 
+* Adaptive: tablet
+*/
+@media screen and (max-width: 64em) {
+    :root {
+      font-size: 0.9rem;
+    }
+}
+
+/* Icons */
+.icon-lg {
+    font-size: 1.2em;
+}
+
+.icon-md {
+    font-size: 1em;
+}
+
+.icon-sm {
+    font-size: 0.8em;
+}
+
+/* Reset */
+.button-reset {
+
+    outline: none;
+
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    line-height: normal;
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    -webkit-appearance: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+    --info-header-color: #222;
+    --info-text-color: #545454;
+    
+    --icon-color: #9e9e9e;
+
+    --brand-color: #75d9d9;
+
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+}
