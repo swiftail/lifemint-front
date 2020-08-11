@@ -3,7 +3,7 @@
 */
 @media screen and (max-width: 64em) {
     :root {
-      font-size: 0.9rem;
+        --root-font-size: 14.4px;
     }
 }
 
@@ -69,7 +69,13 @@
 
     --font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
+    --root-font-size: 16px;
+    --root-font-mult: 1;
+
+    font-size: calc(var(--root-font-mult) * var(--root-font-size));
 }
+
+
 
 body.fontLoaded :root {
     --font-default: 'Montserrat', BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

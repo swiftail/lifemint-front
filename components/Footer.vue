@@ -4,7 +4,7 @@
       <div class="footer__meta">
         <div class="footer__logo-container">
           <a href="#">
-            <img src="../assets/logo.png" alt class="footer__logo" />
+            <img src="../assets/logo.png" alt="Логотип LifeMint" class="footer__logo" />
           </a>
         </div>
         <div>
@@ -94,13 +94,13 @@
         <div class="footer__media-container">
           <!-- Social networks -->
           <div class="footer__media-sn">
-            <button class="footer__media-sn-btn button-reset" aria-label="ВКонтакте">
+            <button class="footer__media-sn-btn button-reset" aria-label="ВКонтакте" title="ВКонтакте">
               <i class="bx bxl-vk icon-md"></i>
             </button>
-            <button class="footer__media-sn-btn button-reset" aria-label="Instagram">
+            <button class="footer__media-sn-btn button-reset" aria-label="Instagram" title="Instagram">
               <i class="bx bxl-instagram icon-md"></i>
             </button>
-            <button class="footer__media-sn-btn button-reset" aria-label="Facebook">
+            <button class="footer__media-sn-btn button-reset" aria-label="Facebook" title="Facebook">
               <i class="bx bxl-facebook icon-md"></i>
             </button>
           </div>

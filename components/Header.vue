@@ -32,7 +32,8 @@
         <div class="header__nav-touch-button-container">
           <button
             class="button-reset header__nav-touch-button"
-            aria-label="Навигация"
+            aria-label="Меню навигации"
+            title="Меню навигации"
             aria-haspopup="true"
             @click="toggleMenu"
           >
@@ -673,5 +674,10 @@ export default {
     white-space: break-spaces;
     padding: 1rem;
   }
+}
+
+/* A11y styling */
+body[data-a11y-size] .header__info {
+  padding: 0;
 }
 </style>
