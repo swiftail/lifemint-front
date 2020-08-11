@@ -6,3 +6,4 @@ bx-menu
 bxl-vk
 bxl-facebook
 bxl-instagram
+bx-right-arrow-alt

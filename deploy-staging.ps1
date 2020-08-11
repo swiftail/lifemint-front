@@ -1,3 +1,6 @@
+# Deploy to staging repo
+# (netlify)
+
 $errorActionPreference='Stop'
 $Location = Get-Location
 
