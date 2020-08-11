@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "icons": "node icons/generator.js",
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "npm run icons && nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate --target static"
+    "generate": "npm run icons && nuxt generate --target static"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",

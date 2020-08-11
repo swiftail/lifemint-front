@@ -129,7 +129,7 @@ export default {};
 /* Common footer style */
 .footer {
   background: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-default);
 }
 
 /* Standard link styling */

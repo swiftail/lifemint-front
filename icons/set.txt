@@ -1,0 +1,8 @@
+bxs-color-fill
+bx-text
+bx-image
+bx-refresh
+bx-menu
+bxl-vk
+bxl-facebook
+bxl-instagram

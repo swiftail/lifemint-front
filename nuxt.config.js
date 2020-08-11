@@ -22,8 +22,13 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap', rel: 'stylesheet' },
-      { href: 'https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css', rel: 'stylesheet' }
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap',
+        rel: 'preload',
+        as: 'style',
+        onload: "this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')"
+      },
+      // { href: 'https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css', rel: 'stylesheet' }
     ]
   },
   /*
@@ -33,7 +38,9 @@ export default {
     'purecss/build/base-min.css',
     'purecss/build/grids-min.css',
     'purecss/build/grids-responsive-min.css',
-    '@/assets/main.css'
+    '@/assets/main.css',
+    '@/assets/icons.css',
+    '@/assets/iconset.css'
   ],
   /*
   ** Plugins to load before mounting the App

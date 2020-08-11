@@ -6,7 +6,7 @@
     <!-- Enables or disables high-contrast mode -->
     <div class="a11y-block">
       <button class="button-reset a11y-button a11y-contrast" aria-label="Режим высокой контрастности">
-        <i class="bx bx-color-fill icon-lg"></i>
+        <i class="bx bxs-color-fill icon-lg"></i>
       </button>
     </div>
 

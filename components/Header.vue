@@ -25,7 +25,7 @@
         <div class="header__separator"></div>
       </div>
       <button class="header__appointment" aria-label="Записаться на приём">
-        <span class="appointment__text">Записаться на приём 🡒</span>
+        <p class="appointment__text">Записаться на приём <i class="bx bx-right-arrow-alt"></i></p>
       </button>
 
       <div class="header__nav" ref="nav">
@@ -122,13 +122,15 @@ export default {
 
   --header-a11y-gap: 0.5rem;
 
+  --header-menu-color: #fafafa;
+
   --header-dropdown-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Common header styling */
 .header {
   width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-default);
   white-space: nowrap;
 }
 
@@ -247,7 +249,7 @@ export default {
 }
 
 .header__nav-submenu > li:hover {
-  background-color: #fafafa;
+  background-color: var(--header-menu-color);
 }
 
 /* Phone styling */
@@ -294,7 +296,7 @@ export default {
 * we need to style all the bottom cells
 */
 .header__a11y, .header__nav {
-  background: #fafafa;
+  background: var(--header-menu-color);
   border-bottom: solid 2px #e5e5e5;
 }
 
@@ -356,6 +358,12 @@ export default {
 .appointment__text {
   transition: transform 0.3s ease-in-out;
   transform: translate(var(--header-appointment-offset), 0);
+
+  display: flex;
+  align-items: center;
+}
+.appointment__text i {
+  font-size: 1.4rem;
 }
 .header__appointment:hover {
   background-color: white;
@@ -433,7 +441,6 @@ export default {
     margin: auto 0;
   }
 
-  /* Bottom row is not styled on mobile */
   .header__nav,
   .header__a11y {
     background: white;
@@ -502,7 +509,7 @@ export default {
     grid-template-rows: repeat(5, 1fr);
     gap: 0 4rem;
 
-    background: white;
+    background: var(--header-menu-color);
     padding: 2rem var(--header-gap);
   }
 
