@@ -511,12 +511,14 @@ export default {
     /* Not visible by default */
     opacity: 0;
     visibility: hidden;
+    display: none;
     transition: opacity ease 0.2s;
   }
 
   .header__nav.visible nav {
     opacity: 1;
     visibility: visible;
+    display: block;
   }
 
   /* Styling nav list as a grid */
