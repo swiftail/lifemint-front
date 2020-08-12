@@ -8,7 +8,7 @@
         class="button-reset a11y-button a11y-contrast"
         aria-label="Режим высокой контрастности"
         title="Режим высокой контрасности"
-        @click="toggleContrast()"
+        @click="toggleEnableContrast()"
         :data-active="contrastMode"
       >
         <iconify-icon icon="a11y-contrast" data-size="lg" :inline="true"></iconify-icon>
@@ -56,7 +56,7 @@
         class="button-reset a11y-button a11y-images"
         aria-label="Переключить отображение изображений"
         title="Переключить отображение изображений"
-        @click="toggleImages()"
+        @click="toggleDisableImages()"
         :data-inactive="disableImages"
       >
         <iconify-icon icon="a11y-image" data-size="lg" :inline="true"></iconify-icon>
@@ -103,19 +103,19 @@ export default {
       else document.body.dataset.a11ySize = size;
     },
 
-    toggleImages(value = undefined) {
+    toggleDisableImages(value = undefined) {
       this.disableImages = value !== undefined ? value : !this.disableImages;
       document.body.classList.toggle("__a11y-no-images", this.disableImages);
     },
 
-    toggleContrast(value = undefined) {
+    toggleEnableContrast(value = undefined) {
       this.contrastMode = value !== undefined ? value : !this.contrastMode;
       document.body.classList.toggle("__a11y-contrast", this.contrastMode);
     },
 
     reset() {
-      this.toggleImages(false);
-      this.toggleContrast(false);
+      this.toggleDisableImages(false);
+      this.toggleEnableContrast(false);
       this.setFontSize("md");
     },
   },
