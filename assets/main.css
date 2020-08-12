@@ -7,22 +7,19 @@
     }
 }
 
-.bx {
-    font-family: 'boxicons-custom'!important;
+svg[dataSize="lg"] {
+    width: 1.3em;
+    height: 1.3em;
+}
+svg[dataSize="md"] {
+    width: 1em;
+    height: 1em;
+}
+svg[dataSize="sm"] {
+    width: 0.7em;
+    height: 0.7em;
 }
 
-/* Icons */
-.icon-lg {
-    font-size: 1.2em;
-}
-
-.icon-md {
-    font-size: 1em;
-}
-
-.icon-sm {
-    font-size: 0.8em;
-}
 
 /* Reset */
 .button-reset {

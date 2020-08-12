@@ -29,7 +29,8 @@ export default {
         onload: "this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')"
       },
       // { href: 'https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css', rel: 'stylesheet' }
-    ]
+    ],
+    script: []
   },
   /*
   ** Global CSS
@@ -38,16 +39,15 @@ export default {
     'purecss/build/base-min.css',
     'purecss/build/grids-min.css',
     'purecss/build/grids-responsive-min.css',
-    '@/assets/main.css',
-    '@/assets/icons.css',
-    '@/assets/iconset.css'
+    '@/assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/util'
+    '~/plugins/util',
+    '~/plugins/iconify'
   ],
   /*
   ** Auto import components

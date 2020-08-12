@@ -5,11 +5,11 @@
         <img class="header__logo" src="../assets/logo.png" alt="Логотип LifeMint" />
 
         <div class="header__address">
-          <p class="header__header">г. Ижевск</p>
+          <p class="header__heading">г. Ижевск</p>
           <p class="header__text">ул. Ломоносова, 2</p>
         </div>
         <div class="header__schedule">
-          <p class="header__header">Режим работы</p>
+          <p class="header__heading">Режим работы</p>
           <p class="header__text">
             пн-пт 8.00 - 20.00
             <br />сб по записи
@@ -17,16 +17,23 @@
         </div>
         <div class="header__phone">
           <ul>
-            <li>8 3412 51 00 50</li>
-            <li>8 951 202-54-33</li>
+            <li>
+              <a href="tel:+73412510050">8 3412 51 00 50</a>
+            </li>
+            <li>
+              <a href="tel:+79512025433">8 951 202-54-33</a>
+              </li>
           </ul>
         </div>
 
         <div class="header__separator"></div>
       </div>
-      <button class="header__appointment" aria-label="Записаться на приём">
-        <p class="appointment__text">Записаться на приём <i class="bx bx-right-arrow-alt"></i></p>
-      </button>
+      <a class="header__appointment" aria-label="Записаться на приём">
+        <span class="header__appointment-text">
+          Записаться на приём
+          <iconify-icon icon="arrow-right" :inline="true"></iconify-icon>
+        </span>
+      </a>
 
       <div class="header__nav" ref="nav">
         <div class="header__nav-touch-button-container">
@@ -35,14 +42,14 @@
             aria-label="Меню навигации"
             title="Меню навигации"
             aria-haspopup="true"
-            @click="toggleMenu"
+            @click="toggleMenu()"
           >
-            <i class="bx bx-menu icon-lg"></i>
+            <iconify-icon icon="menu" data-size="lg" :inline="true"></iconify-icon>
           </button>
         </div>
         <nav role="navigation">
           <ul class="header__nav-list">
-            <li class="h__nav-services">
+            <li class="header__nav-services">
               <a href="#" aria-haspopup="true">Услуги</a>
               <div class="header__nav-submenu-container transitioned">
                 <ul class="header__nav-submenu" aria-label="submenu">
@@ -64,19 +71,19 @@
                 </ul>
               </div>
             </li>
-            <li class="h__nav-price">
+            <li class="header__nav-price">
               <a href>Стоимость</a>
             </li>
-            <li class="h__nav-promotions">
+            <li class="header__nav-promotions">
               <a href>Акции</a>
             </li>
-            <li class="h__nav-reviews">
+            <li class="header__nav-reviews">
               <a href>Отзывы</a>
             </li>
-            <li class="h__nav-about">
+            <li class="header__nav-about">
               <a href>О нас</a>
             </li>
-            <li class="h__nav-concacts">
+            <li class="header__nav-concacts">
               <a href>Контакты</a>
             </li>
           </ul>
@@ -108,12 +115,11 @@ export default {
 <style>
 :root {
   --header-text-size: 0.75rem;
-  --header-header-size: 0.85rem;
+  --header-heading-size: 0.85rem;
 
   --header-text-color: var(--info-text-color);
 
-  /* IMPORTANT: https://shorturl.at/ahuPS */
-  --header-header-color: var(--info-text-color);
+  --header-heading-color: var(--info-text-color);
 
   --header-gap: 6rem;
   --header-nav-gap: 4rem;
@@ -141,17 +147,17 @@ export default {
 }
 
 /* Text styling */
-.header__header,
+.header__heading,
 .header__text {
   margin: 0;
   padding: 0;
 }
 
-.header__header {
+.header__heading {
   font-weight: var(--fw-medium);
 
-  font-size: var(--header-header-size);
-  color: var(--header-header-color);
+  font-size: var(--header-heading-size);
+  color: var(--header-heading-color);
 
   margin-bottom: 0.25rem;
 }
@@ -185,7 +191,7 @@ export default {
 
 /* Main nav menu item styling */
 .header__nav-list > li > a {
-  color: var(--header-header-color);
+  color: var(--header-heading-color);
   text-transform: uppercase;
   font-weight: var(--fw-semibold);
   font-size: 0.9rem;
@@ -260,11 +266,20 @@ export default {
   margin: 0;
   white-space: nowrap;
   text-align: right;
-  font-weight: var(--fw-semibold);
 }
 
 .header__phone li {
   padding-bottom: 0.5rem;
+}
+
+.header__phone li a {
+  text-decoration: none;
+  color: var(--header-heading-color);
+  font-weight: var(--fw-semibold);
+}
+.header__phone li a:hover {
+  color: var(--brand-color);
+  text-decoration: underline;
 }
 
 /* Logo styling */
@@ -296,7 +311,8 @@ export default {
 * We're using grid, so to style the bottom row
 * we need to style all the bottom cells
 */
-.header__a11y, .header__nav {
+.header__a11y,
+.header__nav {
   background: var(--header-menu-color);
   border-bottom: solid 2px #e5e5e5;
 }
@@ -330,13 +346,11 @@ export default {
 
 /* Appointment button styling */
 .header__appointment {
-  /* Reset button */
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
 
   background: var(--brand-color);
   padding: auto;
+  /* Since this element is <a> */
+  display: block;
 
   color: white;
   font-weight: var(--fw-semibold);
@@ -356,21 +370,23 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-.appointment__text {
+.header__appointment-text {
   transition: transform 0.3s ease-in-out;
   transform: translate(var(--header-appointment-offset), 0);
 
   display: flex;
   align-items: center;
 }
-.appointment__text i {
-  font-size: 1.4rem;
+.header__appointment-text svg {
+  width: 1.4rem;
+  height: 1.4rem;
 }
+
 .header__appointment:hover {
   background-color: white;
   color: var(--brand-color);
 }
-.header__appointment:hover .appointment__text {
+.header__appointment:hover .header__appointment-text {
   transform: translate(0);
 }
 
@@ -519,7 +535,7 @@ export default {
   }
 
   /* This one takes whole 2nd column */
-  .header__nav-list .h__nav-services {
+  .header__nav-list .header__nav-services {
     grid-column: 2;
     grid-row: span 5;
 
@@ -535,23 +551,23 @@ export default {
   }
 
   /* Common styling for 1st column */
-  .h__nav-price {
+  .header__nav-price {
     grid-column: 1;
     grid-row: 1;
   }
-  .h__nav-promotions {
+  .header__nav-promotions {
     grid-column: 1;
     grid-row: 2;
   }
-  .h__nav-reviews {
+  .header__nav-reviews {
     grid-column: 1;
     grid-row: 3;
   }
-  .h__nav-about {
+  .header__nav-about {
     grid-column: 1;
     grid-row: 4;
   }
-  .h__nav-contacts {
+  .header__nav-contacts {
     grid-column: 1;
     grid-row: 5;
   }
@@ -575,7 +591,7 @@ export default {
   /* Dropdown link */
   .header__nav-submenu > li > a {
     color: #545454;
-    font-size: var(--header-header-size);
+    font-size: var(--header-heading-size);
     white-space: break-spaces;
   }
 
@@ -662,7 +678,8 @@ export default {
   }
 
   /* Resetting info to common style */
-  .header__phone li, .header__address p {
+  .header__phone li,
+  .header__address p {
     padding: 0;
     margin: 0;
     font-weight: var(--fw-regular);

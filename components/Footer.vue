@@ -19,53 +19,49 @@
       </div>
 
       <div class="footer__services">
-        <span class="footer__header">УСЛУГИ</span>
+        <a class="footer__heading">УСЛУГИ</a>
         <!-- TODO: This will be dynamic -->
-        <nav>
-          <ul class="footer__list">
-            <li>
-              <a href="#">Ортопедия</a>
-            </li>
-            <li>
-              <a href="#">Терапия</a>
-            </li>
-            <li>
-              <a href="#">Хирургия</a>
-            </li>
-            <li>
-              <a href="#">Гигиена и профилактика</a>
-            </li>
-            <li>
-              <a href="#">Имплантация</a>
-            </li>
-          </ul>
-        </nav>
+        <ul class="footer__list">
+          <li>
+            <a href="#">Ортопедия</a>
+          </li>
+          <li>
+            <a href="#">Терапия</a>
+          </li>
+          <li>
+            <a href="#">Хирургия</a>
+          </li>
+          <li>
+            <a href="#">Гигиена и профилактика</a>
+          </li>
+          <li>
+            <a href="#">Имплантация</a>
+          </li>
+        </ul>
       </div>
 
       <div class="footer__nav">
-        <nav>
-          <ul class="footer__list">
-            <li>
-              <a href="#">СТОИМОСТЬ</a>
-            </li>
-            <li>
-              <a href="#">АКЦИИ</a>
-            </li>
-            <li>
-              <a href="#">ОТЗЫВЫ</a>
-            </li>
-            <li>
-              <a href="#">О НАС</a>
-            </li>
-            <li>
-              <a href="#">КОНТАКТЫ</a>
-            </li>
-          </ul>
-        </nav>
+        <ul class="footer__list">
+          <li>
+            <a href="#">СТОИМОСТЬ</a>
+          </li>
+          <li>
+            <a href="#">АКЦИИ</a>
+          </li>
+          <li>
+            <a href="#">ОТЗЫВЫ</a>
+          </li>
+          <li>
+            <a href="#">О НАС</a>
+          </li>
+          <li>
+            <a href="#">КОНТАКТЫ</a>
+          </li>
+        </ul>
       </div>
 
       <div class="footer__address">
-        <span class="footer__header">АДРЕС</span>
+        <span class="footer__heading">АДРЕС</span>
         <p class="footer__text">
           г. Ижевск,
           <br />ул. Ломоносова, 2
@@ -73,7 +69,7 @@
       </div>
 
       <div class="footer__schedule">
-        <span class="footer__header">РЕЖИМ РАБОТЫ</span>
+        <span class="footer__heading">РЕЖИМ РАБОТЫ</span>
         <p class="footer__text">
           пн-пт 8.00 - 20.00
           <br />сб по записи
@@ -94,15 +90,15 @@
         <div class="footer__media-container">
           <!-- Social networks -->
           <div class="footer__media-sn">
-            <button class="footer__media-sn-btn button-reset" aria-label="ВКонтакте" title="ВКонтакте">
-              <i class="bx bxl-vk icon-md"></i>
-            </button>
-            <button class="footer__media-sn-btn button-reset" aria-label="Instagram" title="Instagram">
-              <i class="bx bxl-instagram icon-md"></i>
-            </button>
-            <button class="footer__media-sn-btn button-reset" aria-label="Facebook" title="Facebook">
-              <i class="bx bxl-facebook icon-md"></i>
-            </button>
+            <a class="footer__media-sn-btn" aria-label="ВКонтакте" title="ВКонтакте">
+              <iconify-icon icon="sm-vk" data-size="md" :inline="true"></iconify-icon>
+            </a>
+            <a class="footer__media-sn-btn" aria-label="Instagram" title="Instagram">
+              <iconify-icon icon="sm-instagram" data-size="md" :inline="true"></iconify-icon>
+            </a>
+            <a class="footer__media-sn-btn" aria-label="Facebook" title="Facebook">
+              <iconify-icon icon="sm-facebook" data-size="md" :inline="true"></iconify-icon>
+            </a>
           </div>
           <a class="footer__text" href="mailto:life-mint@yandex.ru">life-mint@yandex.ru</a>
         </div>
@@ -119,10 +115,10 @@ export default {};
 /* Common footer variables */
 :root {
   --footer-text-size: 0.85rem;
-  --footer-header-size: 1rem;
-  --footer-header-letter-spacing: 0.1em;
+  --footer-heading-size: 1rem;
+  --footer-heading-letter-spacing: 0.1em;
 
-  --footer-header-color: var(--info-header-color);
+  --footer-heading-color: var(--info-header-color);
   --footer-text-color: var(--info-text-color);
 }
 
@@ -136,26 +132,28 @@ export default {};
 .footer a {
   text-decoration: none;
   transition: color 0.2s ease;
+  cursor: pointer;
 }
 .footer a:hover {
   color: var(--brand-color);
+  text-decoration: underline;
 }
 
 /* Text styling */
-.footer__header,
+.footer__heading,
 .footer__text {
   margin: 0;
   padding: 0;
 }
 
-.footer__header {
+.footer__heading {
   display: inline-block;
   margin-bottom: 0.5rem;
-  letter-spacing: var(--footer-header-letter-spacing);
+  letter-spacing: var(--footer-heading-letter-spacing);
   font-weight: var(--fw-medium);
 
-  font-size: var(--footer-header-size);
-  color: var(--footer-header-color);
+  font-size: var(--footer-heading-size);
+  color: var(--footer-heading-color);
 }
 
 .footer__text {
@@ -180,10 +178,10 @@ export default {};
 
 /* Nav block styling */
 .footer__nav a {
-  font-size: var(--footer-header-size);
+  font-size: var(--footer-heading-size);
   font-weight: var(--fw-medium);
   text-decoration: none;
-  color: var(--footer-header-color);
+  color: var(--footer-heading-color);
 }
 
 /* List spacing */
@@ -192,7 +190,7 @@ export default {};
 }
 
 /* Services block styling */
-.footer__services a {
+.footer__services ul a {
   text-decoration: none;
   font-size: var(--footer-text-size);
   color: var(--footer-text-color);
@@ -223,8 +221,8 @@ export default {};
 
 .footer__phone li a {
   font-weight: var(--fw-medium);
-  font-size: calc(var(--footer-header-size) * 1.2);
-  color: var(--footer-header-color);
+  font-size: calc(var(--footer-heading-size) * 1.2);
+  color: var(--footer-heading-color);
 }
 
 /* Meta block styling */
@@ -248,12 +246,12 @@ export default {};
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  font-size: calc(var(--footer-header-size) * 2);
+  font-size: calc(var(--footer-heading-size) * 2);
   margin-bottom: calc(var(--footer-text-size) * 1);
 }
 
 .footer__media-sn-btn {
-  color: var(--header-header-color);
+  color: var(--header-heading-color);
   /* Centering icon inside the button */
   line-height: 0;
   cursor: pointer;
@@ -299,7 +297,7 @@ export default {};
 /* adaptive for laptop  */
 @media screen and (max-width: 80em) {
   :root {
-    --footer-header-size: 0.85rem;
+    --footer-heading-size: 0.85rem;
     --footer-text-size: 0.75rem;
   }
 
@@ -335,7 +333,7 @@ export default {};
 @media screen and (max-width: 48em) {
   :root {
     --footer-text-size: 0.75rem;
-    --footer-header-size: 0.85rem;
+    --footer-heading-size: 0.85rem;
   }
 
   .footer__grid {

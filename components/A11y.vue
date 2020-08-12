@@ -5,73 +5,73 @@
     <!-- Enables or disables high-contrast mode -->
     <div class="a11y-block">
       <button
-        class="button-reset a11y-button a11y-contrast __a11y-ignore"
+        class="button-reset a11y-button a11y-contrast"
         aria-label="Режим высокой контрастности"
         title="Режим высокой контрасности"
         @click="toggleContrast()"
         :data-active="contrastMode"
       >
-        <i class="bx bxs-color-fill icon-lg __a11y-ignore"></i>
+        <iconify-icon icon="a11y-contrast" data-size="lg" :inline="true"></iconify-icon>
       </button>
     </div>
 
     <div class="a11y-block">
       <!-- Sets font size to extra large -->
       <button
-        class="button-reset a11y-button a11y-font-xl __a11y-ignore"
+        class="button-reset a11y-button a11y-font-xl"
         aria-label="Очень большой шрифт"
         title="Очень большой шрифт"
         @click="setFontSize('xl')"
         :data-active="fontSize === 'xl'"
       >
-        <i class="bx bx-text icon-lg __a11y-ignore"></i>
+        <iconify-icon icon="a11y-text" data-size="lg" :inline="true"></iconify-icon>
       </button>
 
       <!-- Sets font size to large -->
       <button
-        class="button-reset a11y-button a11y-font-lg __a11y-ignore"
+        class="button-reset a11y-button a11y-font-lg"
         aria-label="Большой шрифт"
         title="Большой шрифт"
         @click="setFontSize('lg')"
         :data-active="fontSize === 'lg'"
       >
-        <i class="bx bx-text icon-md __a11y-ignore"></i>
+        <iconify-icon icon="a11y-text" data-size="md" :inline="true"></iconify-icon>
       </button>
 
       <!-- Sets font size to default -->
       <button
-        class="button-reset a11y-button a11y-font-md __a11y-ignore"
+        class="button-reset a11y-button a11y-font-md"
         aria-label="Обычный шрифт"
         title="Обычный шрифт"
         @click="setFontSize('md')"
         :data-active="fontSize === 'md'"
       >
-        <i class="bx bx-text icon-sm __a11y-ignore"></i>
+        <iconify-icon icon="a11y-text" data-size="sm" :inline="true"></iconify-icon>
       </button>
     </div>
 
     <div class="a11y-block">
       <!-- Toggles images on the page -->
       <button
-        class="button-reset a11y-button a11y-images __a11y-ignore"
+        class="button-reset a11y-button a11y-images"
         aria-label="Переключить отображение изображений"
         title="Переключить отображение изображений"
         @click="toggleImages()"
         :data-inactive="disableImages"
       >
-        <i class="bx bx-image icon-lg __a11y-ignore"></i>
+        <iconify-icon icon="a11y-image" data-size="lg" :inline="true"></iconify-icon>
       </button>
     </div>
 
     <div class="a11y-block">
       <!-- Resets all settings -->
       <button
-        class="button-reset a11y-button a11y-reset __a11y-ignore"
+        class="button-reset a11y-button a11y-reset"
         aria-label="Сбросить настройки"
         title="Сбросить настройки"
         @click="reset()"
       >
-        <i class="bx bx-refresh icon-lg __a11y-ignore"></i>
+        <iconify-icon icon="a11y-refresh" data-size="lg" :inline="true"></iconify-icon>
       </button>
     </div>
   </div>
@@ -169,30 +169,22 @@ body.__a11y-contrast * {
   transition: none !important;
 }
 
-body.__a11y-contrast *:not(.__a11y-ignore) {
+body.__a11y-contrast * {
   background: black !important;
   color: white !important;
 }
-body.__a11y-contrast button:not(.__a11y-ignore):hover,
-a:not(.__a11y-ignore):hover {
+
+body.__a11y-contrast button:hover *,
+body.__a11y-contrast a:hover * {
   background: white !important;
   color: black !important;
 }
 
-body.__a11y-contrast .a11y-button {
-  color: white;
+body.__a11y-contrast .a11y-button[data-active="true"] * {
+  color: blue!important;
 }
 
-body.__a11y-contrast .a11y-button:hover {
-  background: white;
-  color: black;
-}
-
-body.__a11y-contrast .a11y-button[data-active="true"] {
-  color: blue;
-}
-
-body.__a11y-contrast .a11y-button[data-inactive="true"] {
-  color: red;
+body.__a11y-contrast .a11y-button[data-inactive="true"] * {
+  color: red!important;
 }
 </style>
