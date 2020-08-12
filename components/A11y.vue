@@ -3,9 +3,9 @@
 <template>
   <div class="a11y" aria-label="Версия для слабовидящих">
     <!-- Enables or disables high-contrast mode -->
-    <div class="a11y-block">
+    <div class="a11y__block">
       <button
-        class="button-reset a11y-button a11y-contrast"
+        class="button-reset a11y__button"
         aria-label="Режим высокой контрастности"
         title="Режим высокой контрасности"
         @click="toggleEnableContrast()"
@@ -15,10 +15,10 @@
       </button>
     </div>
 
-    <div class="a11y-block">
+    <div class="a11y__block">
       <!-- Sets font size to extra large -->
       <button
-        class="button-reset a11y-button a11y-font-xl"
+        class="button-reset a11y__button"
         aria-label="Очень большой шрифт"
         title="Очень большой шрифт"
         @click="setFontSize('xl')"
@@ -29,7 +29,7 @@
 
       <!-- Sets font size to large -->
       <button
-        class="button-reset a11y-button a11y-font-lg"
+        class="button-reset a11y__button"
         aria-label="Большой шрифт"
         title="Большой шрифт"
         @click="setFontSize('lg')"
@@ -40,7 +40,7 @@
 
       <!-- Sets font size to default -->
       <button
-        class="button-reset a11y-button a11y-font-md"
+        class="button-reset a11y__button"
         aria-label="Обычный шрифт"
         title="Обычный шрифт"
         @click="setFontSize('md')"
@@ -50,10 +50,10 @@
       </button>
     </div>
 
-    <div class="a11y-block">
+    <div class="a11y__block">
       <!-- Toggles images on the page -->
       <button
-        class="button-reset a11y-button a11y-images"
+        class="button-reset a11y__button"
         aria-label="Переключить отображение изображений"
         title="Переключить отображение изображений"
         @click="toggleDisableImages()"
@@ -63,10 +63,10 @@
       </button>
     </div>
 
-    <div class="a11y-block">
+    <div class="a11y__block">
       <!-- Resets all settings -->
       <button
-        class="button-reset a11y-button a11y-reset"
+        class="button-reset a11y__button"
         aria-label="Сбросить настройки"
         title="Сбросить настройки"
         @click="reset()"
@@ -137,11 +137,11 @@ body.__a11y-no-images img {
   gap: 1rem;
 }
 
-.a11y-block {
+.a11y__block {
   display: flex;
 }
 
-.a11y-button {
+.a11y__button {
   color: var(--icon-color);
   /* Centering icon inside the button */
   line-height: 0;
@@ -149,15 +149,15 @@ body.__a11y-no-images img {
   transition: all ease 0.2s;
 }
 
-.a11y-button:hover {
+.a11y__button:hover {
   color: #000;
 }
 
-.a11y-button[data-active="true"] {
+.a11y__button[data-active="true"] {
   color: #95aed4;
 }
 
-.a11y-button[data-inactive="true"] {
+.a11y__button[data-inactive="true"] {
   color: #df1a00;
 }
 
@@ -180,11 +180,11 @@ body.__a11y-contrast a:hover * {
   color: black !important;
 }
 
-body.__a11y-contrast .a11y-button[data-active="true"] * {
+body.__a11y-contrast .a11y__button[data-active="true"] * {
   color: blue!important;
 }
 
-body.__a11y-contrast .a11y-button[data-inactive="true"] * {
+body.__a11y-contrast .a11y__button[data-inactive="true"] * {
   color: red!important;
 }
 </style>
