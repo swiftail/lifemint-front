@@ -123,9 +123,6 @@ export default {
 </script>
 
 <style>
-:root {
-  --hello: world;
-}
 
 body.__a11y-no-images img {
   visibility: hidden;
