@@ -2,47 +2,49 @@
 * Adaptive: tablet
 */
 @media screen and (max-width: 64em) {
-    :root {
-        --root-font-size: 14.4px;
-    }
+  :root {
+    --root-font-size: 14.4px;
+  }
 }
 
 svg[dataSize="lg"] {
-    width: 1.3em;
-    height: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
 }
 svg[dataSize="md"] {
-    width: 1em;
-    height: 1em;
+  width: 1em;
+  height: 1em;
 }
 svg[dataSize="sm"] {
-    width: 0.7em;
-    height: 0.7em;
+  width: 0.7em;
+  height: 0.7em;
 }
 
+.__ie11 svg * {
+    color: black!important;
+}
 
 /* Reset */
 .button-reset {
+  outline: none;
 
-    outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
 
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
+  background: transparent;
 
-    background: transparent;
+  color: inherit;
+  font: inherit;
 
-    color: inherit;
-    font: inherit;
+  line-height: normal;
 
-    line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
 
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 *,
@@ -52,28 +54,28 @@ svg[dataSize="sm"] {
 }
 
 :root {
+  --info-header-color: #222;
+  --info-text-color: #545454;
 
-    --info-header-color: #222;
-    --info-text-color: #545454;
-    
-    --icon-color: #9e9e9e;
+  --icon-color: #9e9e9e;
 
-    --brand-color: #00D5DF;
+  --brand-color: #00d5df;
 
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semibold: 600;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
 
-    --font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-default: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
 
-    --root-font-size: 16px;
-    --root-font-mult: 1;
+  --root-font-size: 16px;
+  --root-font-mult: 1;
 
-    font-size: calc(var(--root-font-mult) * var(--root-font-size));
+  font-size: calc(var(--root-font-mult) * var(--root-font-size));
 }
 
-
-
-body.fontLoaded :root {
-    --font-default: 'Montserrat', BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.__ie11 svg {
+    width: 2em;
+    height: 2em;
 }

@@ -1,11 +1,9 @@
-<!-- Accessibility block -->
-
 <template>
   <div class="a11y" aria-label="Версия для слабовидящих">
     <!-- Enables or disables high-contrast mode -->
     <div class="a11y__block">
       <button
-        class="button-reset a11y__button"
+        class="button-reset a11y__button icon-color"
         aria-label="Режим высокой контрастности"
         title="Режим высокой контрасности"
         @click="toggleEnableContrast()"
@@ -128,6 +126,10 @@ body.__a11y-no-images img {
   visibility: hidden;
 }
 
+body.__a11y-no-images div[role=img] {
+  background: transparent;
+}
+
 /* Element style */
 .a11y {
   display: flex;
@@ -139,8 +141,8 @@ body.__a11y-no-images img {
 }
 
 .a11y__button {
-  color: var(--icon-color);
   /* Centering icon inside the button */
+  color: var(--icon-color);
   line-height: 0;
   cursor: pointer;
   transition: all ease 0.2s;
@@ -183,5 +185,9 @@ body.__a11y-contrast .a11y__button[data-active="true"] * {
 
 body.__a11y-contrast .a11y__button[data-inactive="true"] * {
   color: red!important;
+}
+
+.__ie11 .a11y {
+  display: none;
 }
 </style>

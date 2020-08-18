@@ -22,20 +22,8 @@
         <a class="footer__heading">УСЛУГИ</a>
         <!-- TODO: This will be dynamic -->
         <ul class="footer__list">
-          <li>
-            <a href="#">Ортопедия</a>
-          </li>
-          <li>
-            <a href="#">Терапия</a>
-          </li>
-          <li>
-            <a href="#">Хирургия</a>
-          </li>
-          <li>
-            <a href="#">Гигиена и профилактика</a>
-          </li>
-          <li>
-            <a href="#">Имплантация</a>
+          <li v-for="service in $store.state.services" :key="service.id">
+            <a :href="`/services/${service.id}`">{{ service.name }}</a>
           </li>
         </ul>
       </div>
@@ -198,7 +186,11 @@ export default {};
 
 /* List spacing */
 .footer__services li:not(:last-child) {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.footer__services li {
+  line-height: 1rem;
 }
 
 /* Contact block styling */

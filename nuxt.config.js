@@ -26,14 +26,12 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap',
-        rel: 'preload',
-        as: 'style',
-        onload: "this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')"
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'
       },
-      // { href: 'https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css', rel: 'stylesheet' }
     ],
-    script: []
+    script: [
+      { src: '/js/ie11.js' }
+    ]
   },
   /*
   ** Global CSS
@@ -72,7 +70,17 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+      },
+      preset: {
+        autoprefixer: {
+          grid: true
+        }
+      }
+    }
+  },
   env: {
     server: {
       API_URL: 'http://localhost:1337'

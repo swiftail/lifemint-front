@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__grid">
       <div class="header__info">
-        <img class="header__logo" src="../assets/logo.png" alt="Логотип LifeMint" />
+        <div class="header__logo" role="img" aria-label="Логотип LifeMint"></div>
 
         <div class="header__address">
           <p class="header__heading">г. Ижевск</p>
@@ -22,17 +22,13 @@
             </li>
             <li>
               <a href="tel:+79512025433">8 951 202-54-33</a>
-              </li>
+            </li>
           </ul>
         </div>
-
-        <div class="header__separator"></div>
       </div>
       <a class="header__appointment" aria-label="Записаться на приём">
-        <span class="header__appointment-text">
-          Записаться на приём
-          <iconify-icon icon="arrow-right" :inline="true"></iconify-icon>
-        </span>
+        <span class="header__appointment-text">Записаться на приём</span>
+        <iconify-icon icon="arrow-right" :inline="true"></iconify-icon>
       </a>
 
       <div class="header__nav" ref="nav">
@@ -47,27 +43,17 @@
             <iconify-icon icon="menu" data-size="lg" :inline="true"></iconify-icon>
           </button>
         </div>
-        <nav role="navigation">
+        <nav>
           <ul class="header__nav-list">
             <li class="header__nav-services">
               <a href="#" aria-haspopup="true">Услуги</a>
               <div class="header__nav-submenu-container transitioned">
                 <ul class="header__nav-submenu" aria-label="submenu">
-                  <li>
-                    <a href="#">Ортопедия</a>
+
+                  <li v-for="service in $store.state.services" :key="service.id">
+                    <a :href="`/services/${service.id}`">{{ service.name }}</a>
                   </li>
-                  <li>
-                    <a href="#">Терапия</a>
-                  </li>
-                  <li>
-                    <a href="#">Хирургия</a>
-                  </li>
-                  <li>
-                    <a href="#">Гигиена и профилактика</a>
-                  </li>
-                  <li>
-                    <a href="#">Имплантация</a>
-                  </li>
+
                 </ul>
               </div>
             </li>
@@ -108,7 +94,6 @@ export default {
   components: {
     A11y,
   },
-  mounted() {},
 };
 </script>
 
@@ -189,6 +174,10 @@ export default {
   padding: 0;
 }
 
+.__ie11 .header__nav-list > li {
+  margin-right: 4rem;
+}
+
 /* Main nav menu item styling */
 .header__nav-list > li > a {
   color: var(--header-heading-color);
@@ -214,7 +203,7 @@ export default {
   transition: opacity ease 0.2s;
   visibility: hidden;
 
-  max-width: 10rem;
+  width: 10rem;
 }
 
 /* Dropdown container visible */
@@ -238,13 +227,13 @@ export default {
   background-color: white;
   padding: 0.7rem 0;
   box-shadow: var(--header-dropdown-shadow);
+  white-space: normal;
 }
 
 /* Dropdown link */
 .header__nav-submenu > li > a {
   color: var(--header-text-color);
   font-size: 0.83rem;
-  white-space: break-spaces;
 }
 
 /* Dropdown spacing */
@@ -253,6 +242,8 @@ export default {
   padding: 0.3rem 1.5rem;
   cursor: pointer;
   transition: all ease 0.1s;
+  white-space: break-spaces;
+  word-break: break-word;
 }
 
 .header__nav-submenu > li:hover {
@@ -284,10 +275,15 @@ export default {
 
 /* Logo styling */
 .header__logo {
-  max-height: 100%;
-  display: block;
   margin: 0;
-  height: 4rem;
+  background-image: url("../assets/logo.png");
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  max-height: 100%;
+  height: 100%;
+  width: 12rem;
 }
 
 /* Info - container styling */
@@ -330,22 +326,16 @@ export default {
   padding: 1rem var(--header-gap);
 }
 
-/* Separator for xl devices */
-.header__separator {
-  width: 0;
-  display: none;
-}
-
 /* Header should not take all the space on large screens */
 @media screen and (min-width: 90em) {
-  .header__separator {
-    width: 25%;
-    display: block;
+  .header__info {
+    margin-right: calc(var(--header-gap) + 20%);
   }
 }
 
 /* Appointment button styling */
 .header__appointment {
+  text-align: center;
 
   background: var(--brand-color);
   padding: auto;
@@ -370,14 +360,11 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-.header__appointment-text {
+.header__appointment > * {
   transition: transform 0.3s ease-in-out;
   transform: translate(var(--header-appointment-offset), 0);
-
-  display: flex;
-  align-items: center;
 }
-.header__appointment-text svg {
+.header__appointment svg {
   width: 1.4rem;
   height: 1.4rem;
 }
@@ -386,7 +373,7 @@ export default {
   background-color: white;
   color: var(--brand-color);
 }
-.header__appointment:hover .header__appointment-text {
+.header__appointment:hover > * {
   transform: translate(0);
 }
 
@@ -452,6 +439,10 @@ export default {
       "nav  a11y appointment";
   }
 
+  .__ie11 .header__grid {
+    display: block;
+  }
+
   .header__logo {
     max-height: none;
     height: 2.5rem;
@@ -510,23 +501,26 @@ export default {
 
     /* Not visible by default */
     opacity: 0;
+
     visibility: hidden;
-    display: none;
     transition: opacity ease 0.2s;
+  }
+
+  .__ie11 .header__nav nav {
+    margin-top: 2rem;
   }
 
   .header__nav.visible nav {
     opacity: 1;
     visibility: visible;
-    display: block;
   }
 
   /* Styling nav list as a grid */
   .header__nav-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, 1fr);
-    gap: 0 4rem;
+    grid-template-rows: repeat(4, min-content) 1fr;
+    gap: 1rem 4rem;
 
     background: var(--header-menu-color);
     padding: 2rem var(--header-gap);
@@ -575,7 +569,8 @@ export default {
   }
 
   /* Dropdown container */
-  .header__nav-submenu-container {
+  /* Overriding visibility props from desktop */
+  .header__nav.visible .header__nav-submenu-container {
     position: relative;
     padding-top: 0.8rem;
     opacity: 1;
