@@ -4,7 +4,10 @@
       <div class="footer__meta">
         <div class="footer__logo-container">
           <a href="#">
-            <img src="../assets/logo.png" alt="Логотип LifeMint" class="footer__logo" />
+            <ResponsiveImage
+              :src="require('~/assets/images/logo.png')"
+              :webp="require('~/assets/images/logo.png?webp')"
+            />
           </a>
         </div>
         <div>
@@ -119,7 +122,10 @@ export default {};
 /* Standard link styling */
 .footer a {
   text-decoration: none;
-  transition: color 0.2s ease;
+
+  transition-property: color;
+  transition: var(--standard-transition);
+
   cursor: pointer;
 }
 .footer a:hover {
@@ -225,7 +231,7 @@ export default {};
 }
 
 /* Logo (I HATE THIS) */
-.footer__logo {
+.footer__logo-container img {
   width: 100%;
   display: block;
 }
@@ -247,7 +253,9 @@ export default {};
   /* Centering icon inside the button */
   line-height: 0;
   cursor: pointer;
-  transition: all ease 0.2s;
+
+  transition-property: color;
+  transition: var(--standard-transition);
 }
 
 .footer__media-sn-btn:hover {
@@ -283,7 +291,7 @@ export default {};
   grid-template-areas:
     "meta services nav address  contact"
     "meta services nav schedule contact";
-  padding: 3.5rem 7.5rem;
+  padding: 3.5rem var(--universal-gap);
 }
 
 /* adaptive for laptop  */
@@ -294,8 +302,8 @@ export default {};
   }
 
   .footer__grid {
-    padding: 2rem 2rem;
-    gap: 1rem 4rem;
+    padding: 2rem var(--universal-gap);
+    gap: 1rem 2rem;
   }
 
   .footer__contact {
@@ -338,7 +346,7 @@ export default {};
       "address  schedule"
       "services nav"
       "meta     meta";
-    padding: 2rem;
+    padding: 2rem var(--universal-gap);
   }
 
   .footer__meta,

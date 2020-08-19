@@ -2,7 +2,14 @@
   <header class="header">
     <div class="header__grid">
       <div class="header__info">
-        <div class="header__logo" role="img" aria-label="Логотип LifeMint"></div>
+        <div class="header__logo">
+
+          <ResponsiveImage
+            :src="require('~/assets/images/logo.png')"
+            :webp="require('~/assets/images/logo.png?webp')"
+          />
+
+        </div>
 
         <div class="header__address">
           <p class="header__heading">г. Ижевск</p>
@@ -26,9 +33,9 @@
           </ul>
         </div>
       </div>
-      <a class="header__appointment" aria-label="Записаться на приём">
+      <a class="header__appointment inline-svg-container" aria-label="Записаться на приём">
         <span class="header__appointment-text">Записаться на приём</span>
-        <iconify-icon icon="arrow-right" :inline="true"></iconify-icon>
+        <iconify-icon icon="arrow-right"></iconify-icon>
       </a>
 
       <div class="header__nav" ref="nav">
@@ -49,11 +56,9 @@
               <a href="#" aria-haspopup="true">Услуги</a>
               <div class="header__nav-submenu-container transitioned">
                 <ul class="header__nav-submenu" aria-label="submenu">
-
                   <li v-for="service in $store.state.services" :key="service.id">
                     <a :href="`/services/${service.id}`">{{ service.name }}</a>
                   </li>
-
                 </ul>
               </div>
             </li>
@@ -106,7 +111,6 @@ export default {
 
   --header-heading-color: var(--info-text-color);
 
-  --header-gap: 6rem;
   --header-nav-gap: 4rem;
 
   --header-appointment-width: 24rem;
@@ -200,7 +204,9 @@ export default {
 
   opacity: 0;
 
-  transition: opacity ease 0.2s;
+  transition-property: opacity;
+  transition: var(--standard-transition);
+
   visibility: hidden;
 
   width: 10rem;
@@ -217,7 +223,8 @@ export default {
 
 .header__nav-list > li:hover > a,
 .header__nav-list > li:focus-within > a {
-  transition: all ease 0.2s;
+  transition-property: color;
+  transition: var(--standard-transition);
   color: var(--brand-color);
 }
 
@@ -241,7 +248,8 @@ export default {
 .header__nav-submenu > li {
   padding: 0.3rem 1.5rem;
   cursor: pointer;
-  transition: all ease 0.1s;
+  transition-property: color;
+  transition: var(--standard-transition);
   white-space: break-spaces;
   word-break: break-word;
 }
@@ -276,28 +284,29 @@ export default {
 /* Logo styling */
 .header__logo {
   margin: 0;
-  background-image: url("../assets/logo.png");
-
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  max-height: 100%;
-  height: 100%;
   width: 12rem;
+  position: relative;
+}
+
+.header__logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Info - container styling */
 .header__info {
   display: flex;
 
-  padding-top: 1.5rem;
-  padding-bottom: 0.7rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
 
-  margin: 0 var(--header-gap);
+  margin: 0 var(--universal-gap);
 
   justify-content: space-between;
-
-  align-items: flex-start;
 
   gap: 1rem;
 }
@@ -323,13 +332,13 @@ export default {
   font-size: 1.5rem;
 }
 .header__nav {
-  padding: 1rem var(--header-gap);
+  padding: 1rem var(--universal-gap);
 }
 
 /* Header should not take all the space on large screens */
 @media screen and (min-width: 90em) {
   .header__info {
-    margin-right: calc(var(--header-gap) + 20%);
+    margin-right: calc(var(--universal-gap) + 20%);
   }
 }
 
@@ -357,11 +366,14 @@ export default {
 
   cursor: pointer;
 
-  transition: all 0.3s ease-in-out;
+  transition-property: color, background;
+  transition: var(--standard-transition);
 }
 
 .header__appointment > * {
-  transition: transform 0.3s ease-in-out;
+  transition-property: transform;
+  transition: 0.3s ease-in-out;
+
   transform: translate(var(--header-appointment-offset), 0);
 }
 .header__appointment svg {
@@ -402,17 +414,9 @@ export default {
     "nav  a11y";
 }
 
-/* Lowering the gap */
-@media screen and (max-width: 90em) {
-  :root {
-    --header-gap: 3rem;
-  }
-}
-
 /* Lowering the gaps and the button */
 @media screen and (max-width: 80em) {
   :root {
-    --header-gap: 2rem;
     --header-nav-gap: 1rem;
     --header-appointment-width: 18rem;
     --header-appointment-offset: 0;
@@ -422,7 +426,6 @@ export default {
 /* Tablet adaptive */
 @media screen and (max-width: 64em) {
   :root {
-    --header-gap: 4rem;
     --header-a11y-gap: 1rem;
     --header-bottom-height: 5rem;
   }
@@ -444,9 +447,7 @@ export default {
   }
 
   .header__logo {
-    max-height: none;
-    height: 2.5rem;
-    margin: auto 0;
+    width: 6rem;
   }
 
   .header__nav,
@@ -466,7 +467,9 @@ export default {
     line-height: 0;
     color: var(--icon-color);
     cursor: pointer;
-    transition: all ease 0.2s;
+
+    transition-property: color;
+    transition: var(--standard-transition);
   }
 
   .header__nav.visible .header__nav-touch-button {
@@ -494,7 +497,7 @@ export default {
     position: absolute;
     top: 0;
     margin-top: var(--header-bottom-height);
-    transform: translateX(calc(-1 * var(--header-gap)));
+    transform: translateX(calc(-1 * var(--universal-gap)));
     box-shadow: var(--header-dropdown-shadow);
 
     width: auto;
@@ -513,21 +516,27 @@ export default {
   .header__nav.visible nav {
     opacity: 1;
     visibility: visible;
+    width: 100vw;
   }
 
   /* Styling nav list as a grid */
   .header__nav-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, min-content) 1fr;
-    gap: 1rem 4rem;
+    gap: 1rem 2rem;
 
     background: var(--header-menu-color);
-    padding: 2rem var(--header-gap);
+
+    padding: var(--universal-gap);
   }
 
   .header__nav-list > li > a {
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .header__nav-submenu-container {
+    width: fit-content;
   }
 
   /* This one takes whole 2nd column */
@@ -617,7 +626,6 @@ export default {
 /* Mobiles */
 @media screen and (max-width: 48em) {
   :root {
-    --header-gap: 1rem;
     --header-appointment-width: 100%;
   }
 
@@ -655,6 +663,10 @@ export default {
     gap: 0;
 
     padding: 1rem 0;
+  }
+
+  .header__logo {
+    width: 6rem;
   }
 
   .header__logo {

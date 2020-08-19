@@ -145,7 +145,9 @@ body.__a11y-no-images div[role=img] {
   color: var(--icon-color);
   line-height: 0;
   cursor: pointer;
-  transition: all ease 0.2s;
+  
+  transition-property: color;
+  transition: var(--standard-transition);
 }
 
 .a11y__button:hover {

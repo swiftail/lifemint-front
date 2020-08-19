@@ -17,7 +17,7 @@ export const mutations = {
 
 export const actions = {
     nuxtServerInit: async (store, { req }) => {
-        store.commit('SET_SERVICES', await getServices());
+        store.commit('SET_SERVICES', await getServices() || []);
     }
 }
 

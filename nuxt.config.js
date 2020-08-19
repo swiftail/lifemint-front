@@ -24,13 +24,26 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://ajax.googleapis.com' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'
-      },
+      // These are now loaded via webfontloader;
+      // // Sans serif font
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'
+      // },
+      // // Serif font
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://fonts.googleapis.com/css2?family=Lora&display=swap'
+      // }
     ],
     script: [
-      { src: '/js/ie11.js' }
+      { src: '/js/modernizr.js' },
+      { src: '/js/ie11.js', async: true },
+      // { src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' },
+      { src: '/js/fonts.js', async: true }
     ]
   },
   /*
@@ -40,14 +53,16 @@ export default {
     'purecss/build/base-min.css',
     'purecss/build/grids-min.css',
     'purecss/build/grids-responsive-min.css',
-    '@/assets/main.css'
+    '@/assets/main.css',
+    '@/assets/gap.css'
   ],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/util',
+    '~/plugins/lazyImage',
+    '~/plugins/swiper',
     '~/plugins/iconify'
   ],
   /*
@@ -59,7 +74,11 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@aceforth/nuxt-optimized-images'
   ],
+  optimizedImages: {
+    optimizeImages: true
+  },
   /*
   ** Nuxt.js modules
   */
