@@ -1,4 +1,9 @@
 export default {
+  components: true,
+  pageTransition: {
+    name: 'fade',
+    mode: 'out-in'
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -21,23 +26,20 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+
+      { name: 'msapplication-TileColor', content: '#00d5df' },
+      { name: 'theme-color', content: '#ffffff' }
     ],
     link: [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://ajax.googleapis.com' },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // These are now loaded via webfontloader;
-      // // Sans serif font
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'
-      // },
-      // // Serif font
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css2?family=Lora&display=swap'
-      // }
+
+      { rel: 'apple-touch-icon', sizes: '120x120', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#00d5df' },
     ],
     script: [
       { src: '/js/modernizr.js' },
@@ -51,8 +53,6 @@ export default {
   */
   css: [
     'purecss/build/base-min.css',
-    'purecss/build/grids-min.css',
-    'purecss/build/grids-responsive-min.css',
     '@/assets/main.css',
     '@/assets/gap.css'
   ],
@@ -62,14 +62,12 @@ export default {
   */
   plugins: [
     '~/plugins/lazyImage',
-    '~/plugins/swiper',
-    '~/plugins/iconify'
+    '~/plugins/iconify',
+    '~/plugins/util',
+    '~/plugins/appointmentModal.js',
+    '~/plugins/mask.js',
+    '~/plugins/notyf.js'
   ],
-  /*
-  ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
-  */
-  components: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -95,10 +93,14 @@ export default {
       },
       preset: {
         autoprefixer: {
-          grid: true
+          // We don't support IE anyway?
+          // grid: true
         }
       }
-    }
+    },
+    // vendor: [
+    //   'micromodal/micromodal.min.js'
+    // ]
   },
   env: {
     server: {
@@ -112,7 +114,4 @@ export default {
     subFolders: true,
     dir: 'build/dist'
   },
-  router: {
-    base: '/'
-  }
 }

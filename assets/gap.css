@@ -1,23 +1,27 @@
 :root {
   --universal-gap: 6rem;
+  --content-gap: 15rem;
 }
 
 /* Lowering the gap */
 @media screen and (max-width: 90em) {
   :root {
     --universal-gap: 4rem;
+    --content-gap: 8rem;
   }
 }
 
 @media screen and (max-width: 80em) {
   :root {
     --universal-gap: 2rem;
+    --content-gap: 4rem;
   }
 }
 
 @media screen and (max-width: 64em) {
   :root {
     --universal-gap: 4rem;
+    --content-gap: var(--universal-gap);
   }
 }
 

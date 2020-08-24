@@ -1,10 +1,15 @@
-/* 
+/*
 * Adaptive: tablet
 */
 @media screen and (max-width: 64em) {
   :root {
     --root-font-size: 14.4px;
   }
+}
+
+svg[dataSize="xl"] {
+  width: 2.5em;
+  height: 2.5em;
 }
 
 svg[dataSize="lg"] {
@@ -60,7 +65,7 @@ svg[dataSize="sm"] {
   --icon-color: #9e9e9e;
 
   --brand-color: #00d5df;
-  --accent-color: #e7140c;
+  --accent-color: #fd8a8b;
 
   --fw-regular: 400;
   --fw-normal: var(--fw-regular);
@@ -90,4 +95,16 @@ svg[dataSize="sm"] {
 
 .inline-svg-container svg {
   margin-bottom: 0.125em;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }

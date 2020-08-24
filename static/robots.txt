@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /ie11
+Disallow: /privacy.txt

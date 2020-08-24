@@ -1,17 +1,32 @@
 <template>
   <div class="layout">
     <div class="layout__content-wrapper">
-      <Header />
+      <LayoutHeader />
       <main>
         <Nuxt />
       </main>
     </div>
-    <Footer />
+    <LayoutFooter />
+
+    <AppointmentModal />
   </div>
 </template>
 
+<script>
+
+export default {
+  mounted() {
+   this.$store.state.delayedErrors.forEach(window.displayError)
+  }
+};
+</script>
+
 <style>
-html, body, #__nuxt, #__layout, .layout {
+html,
+body,
+#__nuxt,
+#__layout,
+.layout {
   height: 100%;
 }
 

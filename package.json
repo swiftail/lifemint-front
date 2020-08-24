@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "lodash.mapvalues": "^4.6.0",
+    "lodash.sample": "^4.2.1",
+
+    "marked": "^1.1.1",
+    "notyf": "^3.9.0",
     "nuxt": "^2.14.0",
     "swiper": "^6.1.2",
-    "vue-awesome-swiper": "^4.1.1"
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-inputmask": "^0.2.1",
+    "vue-lazy-hydration": "^1.0.0-beta.14"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.2.0",
