@@ -1,23 +1,14 @@
 export default {
+  static: {
+
+  },
   components: true,
   pageTransition: {
     name: 'fade',
     mode: 'out-in'
   },
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
   mode: 'universal',
-  /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
   target: 'server',
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
-  */
   head: {
     htmlAttrs: {
       lang: 'ru-RU'
@@ -48,18 +39,11 @@ export default {
       { src: '/js/fonts.js', async: true }
     ]
   },
-  /*
-  ** Global CSS
-  */
   css: [
     'purecss/build/base-min.css',
     '@/assets/main.css',
     '@/assets/gap.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
-  */
   plugins: [
     '~/plugins/lazyImage',
     '~/plugins/iconify',
@@ -68,50 +52,16 @@ export default {
     '~/plugins/mask.js',
     '~/plugins/notyf.js'
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     '@aceforth/nuxt-optimized-images'
   ],
   optimizedImages: {
     optimizeImages: true
   },
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    '@nuxtjs/separate-env'
-  ],
-  /*
-  ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
-  */
-  build: {
-    postcss: {
-      plugins: {
-      },
-      preset: {
-        autoprefixer: {
-          // We don't support IE anyway?
-          // grid: true
-        }
-      }
-    },
-    // vendor: [
-    //   'micromodal/micromodal.min.js'
-    // ]
-  },
   env: {
-    server: {
-      API_URL: 'http://localhost:1337'
-    },
-    client: {
-      API_URL: 'http://localhost:1337'
-    }
+    API_URL: 'http://http://45.153.231.118/api'
   },
   generate: {
-    subFolders: true,
     dir: 'build/dist'
-  },
+  }
 }
