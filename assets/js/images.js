@@ -9,10 +9,10 @@ export default {
 
   masthead: [
     {
-      src: require('~/assets/images/masthead/1.png?resize&sizes[]=400&sizes[]=600&sizes[]=1000&sizes[]=1366'),
-      webp: require('~/assets/images/masthead/1.png?resize&sizes[]=400&sizes[]=600&sizes[]=1000&sizes[]=1366&format=webp'),
-      fallback: require('~/assets/images/masthead/1.png'),
-      placeholder: require('~/assets/images/masthead/1.png?lqip')
+      src: require('~/assets/images/masthead/1.jpg?resize&sizes[]=400&sizes[]=600&sizes[]=1000&sizes[]=1366'),
+      webp: require('~/assets/images/masthead/1.jpg?resize&sizes[]=400&sizes[]=600&sizes[]=1000&sizes[]=1366&format=webp'),
+      fallback: require('~/assets/images/masthead/1.jpg'),
+      placeholder: require('~/assets/images/masthead/1.jpg?lqip')
     }
   ],
 

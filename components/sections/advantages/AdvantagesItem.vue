@@ -25,6 +25,7 @@ export default {
   font-size: 1.2rem;
   margin: 0;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .advantages-item__description {

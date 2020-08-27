@@ -1,12 +1,12 @@
 <template>
   <div class="section-header">
-    <h2 v-if="header">{{ header }}</h2>
+    <div v-if="header">{{ header }}</div>
     <h3 v-if="text != undefined">{{ text }}</h3>
   </div>
 </template>
 
 <style>
-.section-header h2 {
+.section-header > div {
   color: #7a7a7a;
   font-family: var(--font-default);
   font-weight: var(--fw-semibold);
@@ -17,7 +17,7 @@
   margin: 0;
 }
 
-.section-header h3 {
+.section-header > h3 {
   color: black;
   font-family: var(--font-serif);
   font-size: 2.2rem;

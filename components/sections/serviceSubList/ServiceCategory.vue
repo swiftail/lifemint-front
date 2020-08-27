@@ -1,17 +1,17 @@
 <template>
   <div class="service-category">
-    <h3 v-if="header" class="servive-category__header">
+    <h2 v-if="header" class="servive-category__header">
       {{ header }}
-    </h3>
+    </h2>
 
     <ul class="service-category__items">
-      <li v-for="item in items" class="service-category__item" :key="item.id">
-        <div class="service-category-item__name">{{ item.name }}</div>
-        <div class="service-category-item__description">
+      <li v-for="item in items" class="service-category__item" :class="{ 'no-description': !item.description }" :key="item.id">
+        <h3 class="service-category-item__name" >{{ item.name }}</h3>
+        <div class="service-category-item__description" v-if="item.description">
           {{ item.description }}
         </div>
         <div class="service-category-item__price">
-          <span> От {{ item.startingPrice }} руб </span>
+          <span v-if="item.startingPrice"> От {{ item.startingPrice }} руб </span>
         </div>
       </li>
     </ul>
@@ -19,6 +19,7 @@
 </template>
 
 <style>
+
 .service-category {
   font-family: var(--font-default);
 }
@@ -42,10 +43,18 @@
   padding: 2.7rem;
   margin-top: 1.5rem;
 
+  gap: 1.2rem 0;
+
   display: grid;
   grid-template:
     "name price" min-content
     "desc price" min-content /
+    1fr min-content;
+}
+
+.service-category__item.no-description {
+  grid-template:
+    "name price" min-content /
     1fr min-content;
 }
 
@@ -54,8 +63,8 @@
 
   font-size: 1.2rem;
   font-weight: var(--fw-semibold);
-  margin-bottom: 1.2rem;
 
+  margin: 0;
 }
 
 .service-category-item__description {
@@ -78,7 +87,7 @@
   padding-left: 5rem;
 
   font-size: 1.5rem;
-  color: var(--info-text-color);
+  color: var(--accent-color);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
 }

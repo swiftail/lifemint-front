@@ -2,7 +2,10 @@
   <div class="review">
     <div class="review__heading">
       <div class="review__avatar">
-        <img loading="lazy" :src="$api(review.avatar.formats.thumbnail.url)" />
+        <img
+          loading="lazy"
+          :src="$api($get(review, 'avatar.formats.thumbnail.url', ''))"
+        />
       </div>
       <div class="review__meta">
         <span class="review__date">{{ review.date }}</span>
@@ -64,7 +67,7 @@ export default {
   height: 1.6rem;
 
   transition-property: color;
-  transition: var(--standard-transition)
+  transition: var(--standard-transition);
 }
 
 .review__source a:hover svg {

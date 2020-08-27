@@ -2,8 +2,8 @@
   <div class="services-item">
     <div class="services-item__image-container">
       <ResponsiveImage
-      :src="$api(service.previewImage.url)"
-      :placeholder="$api(service.previewImage.formats.thumbnail.url)"
+      :src="$api($get(service, 'previewImage.url', ''))"
+      :placeholder="$api($get(service, 'previewImage.formats.thumbnail.url', ''))"
       />
     </div>
     <div class="services-item__wrapper">

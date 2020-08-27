@@ -12,7 +12,7 @@
       <SectionServiceDescription :service="service" />
     </PageSection>
 
-    <PageSection v-if="service.subServices.length" text="Список услуг" gray>
+    <PageSection v-if="service.subServices.length" :text="service.serviceListHeading" gray>
       <SectionServiceSubList :service="service" />
     </PageSection>
 
@@ -21,7 +21,7 @@
     </PageSection>
 
     <PageSection header="Врачи клиники" text="Наши специалисты" gray>
-      <SectionExperts />
+      <SectionExperts :experts="experts" />
     </PageSection>
 
     <PageSection white>
@@ -29,7 +29,7 @@
     </PageSection>
 
     <PageSection header="Отзывы" text="О нас говорят" gray>
-      <SectionReviews />
+      <SectionReviews :reviews="reviews" />
     </PageSection>
 
     <PageSection header="Акции" white>TODO: Акции</PageSection>
@@ -53,8 +53,11 @@ export default {
     return store.getters.getServiceBySlug(slug);
   },
   data() {
+    let service =this.$store.getters.getServiceBySlug(this.$route.params.slug)
     return {
-      service: this.$store.getters.getServiceBySlug(this.$route.params.slug),
+      service: service,
+      reviews: service.reviews,
+      experts: service.experts,
       mastheadImage: images.randomMastheadImage()
     };
   }

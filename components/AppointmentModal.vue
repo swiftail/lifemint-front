@@ -7,16 +7,15 @@
 
       <form @submit.prevent="submit">
         <div class="form-group">
+
           <input
             type="text"
             name="phone"
             id="appointment-modal__phone"
+
             placeholder="+7"
             v-model.trim="phone"
-            v-mask="{
-              mask: '+7 (999) 999 99-99',
-              jitMasking: true
-            }"
+
             ref="phone"
           />
         </div>
@@ -123,7 +122,7 @@ export default {
 
       let { name, phone, comment, context } = this;
 
-        context = `${context} (Страница: ${window.location.pathname})`
+      context = `${context} (Страница: ${window.location.pathname})`;
 
       let result = await postAppointment({
         name,

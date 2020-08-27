@@ -9,7 +9,11 @@
         @click="toggleEnableContrast()"
         :data-active="contrastMode"
       >
-        <iconify-icon icon="a11y-contrast" data-size="lg" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-contrast"
+          data-size="lg"
+          :inline="true"
+        ></iconify-icon>
       </button>
     </div>
 
@@ -22,7 +26,11 @@
         @click="setFontSize('xl')"
         :data-active="fontSize === 'xl'"
       >
-        <iconify-icon icon="a11y-text" data-size="lg" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-text"
+          data-size="lg"
+          :inline="true"
+        ></iconify-icon>
       </button>
 
       <!-- Sets font size to large -->
@@ -33,7 +41,11 @@
         @click="setFontSize('lg')"
         :data-active="fontSize === 'lg'"
       >
-        <iconify-icon icon="a11y-text" data-size="md" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-text"
+          data-size="md"
+          :inline="true"
+        ></iconify-icon>
       </button>
 
       <!-- Sets font size to default -->
@@ -44,7 +56,11 @@
         @click="setFontSize('md')"
         :data-active="fontSize === 'md'"
       >
-        <iconify-icon icon="a11y-text" data-size="sm" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-text"
+          data-size="sm"
+          :inline="true"
+        ></iconify-icon>
       </button>
     </div>
 
@@ -57,7 +73,11 @@
         @click="toggleDisableImages()"
         :data-inactive="disableImages"
       >
-        <iconify-icon icon="a11y-image" data-size="lg" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-image"
+          data-size="lg"
+          :inline="true"
+        ></iconify-icon>
       </button>
     </div>
 
@@ -69,31 +89,38 @@
         title="Сбросить настройки"
         @click="reset()"
       >
-        <iconify-icon icon="a11y-refresh" data-size="lg" :inline="true"></iconify-icon>
+        <iconify-icon
+          icon="a11y-refresh"
+          data-size="lg"
+          :inline="true"
+        ></iconify-icon>
       </button>
     </div>
   </div>
 </template>
 
-
 <script>
+const defaultSettings = {
+  fontSize: "md",
+  disableImages: false,
+  contrastMode: false
+};
+
+const fontMultupliers = {
+  xl: 1.5,
+  lg: 1.2,
+  md: 1
+};
+
 export default {
   data() {
-    return {
-      fontSize: "md",
-      disableImages: false,
-      contrastMode: false,
-    };
+    return defaultSettings;
   },
   methods: {
     setFontSize(size) {
       this.fontSize = size;
 
-      let mult = {
-        xl: 1.5,
-        lg: 1.2,
-        md: 1,
-      }[size];
+      let mult = fontMultupliers[size];
 
       document.documentElement.style.setProperty("--root-font-mult", mult);
 
@@ -112,16 +139,15 @@ export default {
     },
 
     reset() {
-      this.toggleDisableImages(false);
-      this.toggleEnableContrast(false);
-      this.setFontSize("md");
-    },
-  },
+      this.toggleDisableImages(defaultSettings.disableImages);
+      this.toggleEnableContrast(defaultSettings.contrastMode);
+      this.setFontSize(defaultSettings.fontSize);
+    }
+  }
 };
 </script>
 
 <style>
-
 /*
 * Widget styling
 */
@@ -160,11 +186,13 @@ export default {
 * A11y styling
 */
 
-body.__a11y-no-images img, body.__a11y-contrast .a11y-bg-image-container img {
+body.__a11y-no-images img,
+body.__a11y-contrast .a11y-bg-image-container img {
   visibility: hidden;
 }
 
-body.__a11y-no-images div[role=img], body.__a11y-contrast .a11y-bg-image-container div[role=img] {
+body.__a11y-no-images div[role="img"],
+body.__a11y-contrast .a11y-bg-image-container div[role="img"] {
   background: transparent;
 }
 
@@ -188,10 +216,15 @@ body.__a11y-contrast a:hover * {
 }
 
 body.__a11y-contrast .a11y__button[data-active="true"] * {
-  color: blue!important;
+  color: blue !important;
 }
 
 body.__a11y-contrast .a11y__button[data-inactive="true"] * {
-  color: red!important;
+  color: red !important;
+}
+
+body[data-a11y-size] {
+  --universal-gap: 1rem;
+  --content-gap: 1rem;
 }
 </style>

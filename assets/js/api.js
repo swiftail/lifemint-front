@@ -3,6 +3,12 @@ export const API_URL = process.env.API_URL;
 async function _apiGet(path) {
 
   return fetch(`${API_URL}/${path}`)
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Request status code is not ok: ${r.status} ${r.statusText}`)
+      }
+      return r
+    })
     .then(r => r.json())
     .catch(e => {
       console.error(`Api request failed: ${path}`, e)
@@ -22,6 +28,12 @@ async function _apiPost(path, data) {
     },
     body: JSON.stringify(data)
   })
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Request status code is not ok: ${r.status} ${r.statusText}`)
+      }
+      return r
+    })
     .then(r => r.json())
     .catch(e => {
       console.error(`Api request failed: ${path}`, e)

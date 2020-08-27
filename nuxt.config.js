@@ -1,7 +1,5 @@
 export default {
-  static: {
-
-  },
+  version: '0.0.1',
   components: true,
   pageTransition: {
     name: 'fade',
@@ -49,9 +47,25 @@ export default {
     '~/plugins/iconify',
     '~/plugins/util',
     '~/plugins/appointmentModal.js',
-    '~/plugins/mask.js',
     '~/plugins/notyf.js'
   ],
+  modules: [
+    'nuxt-ssr-cache',
+    '@nuxtjs/sitemap'
+  ],
+  sitemap: {
+    gzip: true,
+    hostname: 'https://life-mint.u'
+  },
+  cache: {
+    useHostPrefix: false,
+    pages: ['/'],
+    store: {
+      type: 'memory',
+      max: 100,
+      ttl: 60,
+    },
+  },
   buildModules: [
     '@aceforth/nuxt-optimized-images'
   ],
@@ -59,7 +73,8 @@ export default {
     optimizeImages: true
   },
   env: {
-    API_URL: 'http://http://45.153.231.118/api'
+    // API_URL: 'http://localhost:1337',
+    API_URL: 'http://45.153.231.118/api'
   },
   generate: {
     dir: 'build/dist'

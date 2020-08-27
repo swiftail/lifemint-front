@@ -184,7 +184,8 @@ export default {
 
 /* Main nav menu styling */
 .header__nav-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(36, 1fr);
   gap: var(--header-nav-gap);
   margin: 0;
   padding: 0;

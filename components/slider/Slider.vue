@@ -137,9 +137,7 @@ export default {
 
         breakpoints: swiperBreakpoints
       }
-    };
-
-    console.log(options);
+    }
 
     return options;
   },

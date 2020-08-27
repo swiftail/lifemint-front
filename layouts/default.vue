@@ -13,10 +13,12 @@
 </template>
 
 <script>
-
 export default {
+  created() {
+    console.log(this.$store.state);
+  },
   mounted() {
-   this.$store.state.delayedErrors.forEach(window.displayError)
+    this.$store.state.delayedErrors.forEach(window.displayError);
   }
 };
 </script>
