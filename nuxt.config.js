@@ -1,3 +1,5 @@
+import getRoutes from './assets/js/getRoutes.js'
+
 export default {
   version: '0.0.1',
   components: true,
@@ -11,12 +13,9 @@ export default {
     htmlAttrs: {
       lang: 'ru-RU'
     },
-    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-
       { name: 'msapplication-TileColor', content: '#00d5df' },
       { name: 'theme-color', content: '#ffffff' }
     ],
@@ -32,8 +31,8 @@ export default {
     ],
     script: [
       { src: '/js/modernizr.js' },
+      { src: `https://api-maps.yandex.ru/2.1/?apikey=${process.env.YMAPS_KEY}&lang=ru_RU` },
       { src: '/js/ie11.js', async: true },
-      // { src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' },
       { src: '/js/fonts.js', async: true }
     ]
   },
@@ -43,28 +42,35 @@ export default {
     '@/assets/gap.css'
   ],
   plugins: [
+    '~/plugins/api',
     '~/plugins/lazyImage',
     '~/plugins/iconify',
     '~/plugins/util',
-    '~/plugins/appointmentModal.js',
-    '~/plugins/notyf.js'
+    '~/plugins/appointmentModal',
+    '~/plugins/notyf',
+    { src: '~/plugins/clientInit', mode: 'client' }
   ],
   modules: [
-    'nuxt-ssr-cache',
+    [
+      "nuxt-social-meta",
+      {
+        url: "https://life-mint.ru",
+        title: "Стоматологическая клиника Life Mint",
+        site_name: "Life Mint",
+        description: "Стоматология Life Mint в самом центре Ижевска. Качественное лечение и профилактика по приемлемым ценам.",
+        img: "/logo.png",
+        locale: "ru_RU"
+      },
+    ],
+    '@nuxtjs/axios',
     '@nuxtjs/sitemap'
   ],
   sitemap: {
     gzip: true,
-    hostname: 'https://life-mint.u'
-  },
-  cache: {
-    useHostPrefix: false,
-    pages: ['/'],
-    store: {
-      type: 'memory',
-      max: 100,
-      ttl: 60,
-    },
+    routes() {
+      console.log(arguments)
+      return getRoutes()
+    }
   },
   buildModules: [
     '@aceforth/nuxt-optimized-images'
@@ -73,8 +79,8 @@ export default {
     optimizeImages: true
   },
   env: {
-    // API_URL: 'http://localhost:1337',
-    API_URL: 'http://45.153.231.118/api'
+    API_URL: process.env.API_URL || 'http://localhost:1337',
+    YMAPS_KEY: process.env.YMAPS_KEY
   },
   generate: {
     dir: 'build/dist'

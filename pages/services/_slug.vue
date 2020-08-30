@@ -28,13 +28,15 @@
       <ConsultationForm />
     </PageSection>
 
-    <PageSection header="Отзывы" text="О нас говорят" gray>
+    <PageSection header="Отзывы" text="О нас говорят" gray id="reviews">
       <SectionReviews :reviews="reviews" />
     </PageSection>
 
-    <PageSection header="Акции" white>TODO: Акции</PageSection>
+    <PageSection header="Акции" white id="promotions">
+      <SectionPromotions />
+    </PageSection>
 
-    <PageSection white>
+    <PageSection white id="about">
       <SectionAbout />
     </PageSection>
 
@@ -60,6 +62,15 @@ export default {
       experts: service.experts,
       mastheadImage: images.randomMastheadImage()
     };
+  },
+  head() {
+    return {
+      title: this.$get(this.service, 'meta.title', this.service.name),
+      meta: [
+        { name: 'description', content: this.$get(this.service, 'meta.description', '') },
+        { name: 'keywords', content: this.$get(this.service, 'meta.keywords', '') }
+      ]
+    }
   }
 };
 </script>

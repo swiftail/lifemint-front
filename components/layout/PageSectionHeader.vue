@@ -1,12 +1,19 @@
 <template>
   <div class="section-header">
-    <div v-if="header">{{ header }}</div>
-    <h3 v-if="text != undefined">{{ text }}</h3>
+
+    <template v-if="text">
+      <div class="section-header__header" v-if="header" v-html="header"></div>
+      <h2 class="section-header__text"  v-html="text"></h2>
+    </template>
+    <template v-else>
+      <h2 class="section-header__header" v-html="header"></h2>
+    </template>
+
   </div>
 </template>
 
 <style>
-.section-header > div {
+.section-header__header {
   color: #7a7a7a;
   font-family: var(--font-default);
   font-weight: var(--fw-semibold);
@@ -17,7 +24,7 @@
   margin: 0;
 }
 
-.section-header > h3 {
+.section-header__text {
   color: black;
   font-family: var(--font-serif);
   font-size: 2.2rem;
@@ -30,6 +37,6 @@
 
 <script>
 export default {
-  props: ["header", "text"],
+  props: ["header", "text"]
 };
 </script>

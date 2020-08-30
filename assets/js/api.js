@@ -1,51 +1,40 @@
 export const API_URL = process.env.API_URL;
 
-async function _apiGet(path) {
+async function apiGet($axios, path) {
 
-  return fetch(`${API_URL}/${path}`)
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Request status code is not ok: ${r.status} ${r.statusText}`)
-      }
-      return r
-    })
-    .then(r => r.json())
+  let url = `${API_URL}/${path}`
+
+  return $axios.get(url)
+    .then(r => r.data)
     .catch(e => {
-      console.error(`Api request failed: ${path}`, e)
-      return undefined
-    });
-
-}
-
-async function _apiPost(path, data) {
-
-  console.log('Post', path, data)
-
-  return fetch(`${API_URL}/${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Request status code is not ok: ${r.status} ${r.statusText}`)
-      }
-      return r
-    })
-    .then(r => r.json())
-    .catch(e => {
-      console.error(`Api request failed: ${path}`, e)
+      console.error(`Api request failed: ${url}`, e)
       return undefined
     })
 
 }
 
-export const getServices = async () => _apiGet('services');
-export const getExperts = async () => _apiGet('experts');
-export const getReviews = async () => _apiGet('reviews');
-export const getAdvantages = async () => _apiGet('advantages')
-export const getGallery = async () => _apiGet('gallery')
+async function apiPost($axios, path, data) {
 
-export const postAppointment = async (data) => _apiPost('appointments', data)
+  let url = `${API_URL}/${path}`
+
+  return $axios.post(url, data)
+    .then(r => r.data)
+    .catch(e => {
+      console.error(`Api request failed: ${url}`, e)
+      return undefined
+    })
+
+}
+
+export const createApi = $axios => ({
+
+  getServices: async () => apiGet($axios, 'services'),
+  getExperts: async () => apiGet($axios, 'experts'),
+  getReviews: async () => apiGet($axios, 'reviews'),
+  getAdvantages: async () => apiGet($axios, 'advantages'),
+  getGallery: async () => apiGet($axios, 'gallery'),
+  getPromotions: async () => apiGet($axios, 'promotions'),
+  getPricelist: async () => apiGet($axios, 'pricelist'),
+
+  postAppointment: async (data) => apiPost($axios, 'appointments', data)
+})

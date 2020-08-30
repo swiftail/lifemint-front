@@ -6,6 +6,7 @@
           <n-link to="/">
             <ResponsiveImage
               :image="logoImage"
+              alt="Логотип Life Mint"
             />
           </n-link>
         </div>
@@ -15,7 +16,7 @@
             <br />все права защищены
           </p>
           <p class="footer__text">
-            <a href="#">Политика конфиденциальности</a>
+            <a href="/privacy.txt">Политика конфиденциальности</a>
           </p>
         </div>
       </div>
@@ -33,19 +34,19 @@
       <div class="footer__nav">
         <ul class="footer__list">
           <li>
-            <a href="#">СТОИМОСТЬ</a>
+            <a :href="$api($store.state.pricelistLink)">СТОИМОСТЬ</a>
           </li>
           <li>
-            <a href="#">АКЦИИ</a>
+            <AnchorLink anchor="promotions">АКЦИИ</AnchorLink>
           </li>
           <li>
-            <a href="#">ОТЗЫВЫ</a>
+            <AnchorLink anchor="reviews">ОТЗЫВЫ</AnchorLink>
           </li>
           <li>
-            <a href="#">О НАС</a>
+            <AnchorLink anchor="about">О НАС</AnchorLink>
           </li>
           <li>
-            <a href="#">КОНТАКТЫ</a>
+            <n-link to="/contacts">КОНТАКТЫ</n-link>
           </li>
         </ul>
       </div>
@@ -80,10 +81,10 @@
         <div class="footer__media-container">
           <!-- Social networks -->
           <div class="footer__media-sn">
-            <a class="footer__media-sn-btn" aria-label="ВКонтакте" title="ВКонтакте" target="_blank">
+            <a class="footer__media-sn-btn" aria-label="ВКонтакте" title="ВКонтакте" target="_blank" href="https://www.instagram.com/life_mint.ru/">
               <iconify-icon icon="sm-vk" data-size="md" :inline="true"></iconify-icon>
             </a>
-            <a class="footer__media-sn-btn" aria-label="Instagram" title="Instagram" target="_blank">
+            <a class="footer__media-sn-btn" aria-label="Instagram" title="Instagram" target="_blank" href="https://www.instagram.com/life_mint.ru/">
               <iconify-icon icon="sm-instagram" data-size="md" :inline="true"></iconify-icon>
             </a>
             <a class="footer__media-sn-btn" aria-label="Facebook" title="Facebook" target="_blank">

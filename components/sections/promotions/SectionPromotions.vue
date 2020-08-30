@@ -1,16 +1,10 @@
 <template>
   <div class="section-promotions">
     <PromotionsItem
-      name="ПЕНСИОНЕРАМ СКИДКА 10% НА ПРОТЕЗИРОВАНИЕ"
-      text="Для пенсионеров действует скидка -10% нные протезы."
-    />
-    <PromotionsItem
-      name="ПЕНСИОНЕРАМ СКИДКА 10% НА ПРОТЕЗИРОВАНИЕ"
-      text="Для пенсионеров действует скидка -10% нные протезы."
-    />
-    <PromotionsItem
-      name="ПЕНСИОНЕРАМ СКИДКА 10% НА ПРОТЕЗИРОВАНИЕ"
-      text="Для пенсионеров действует скидка -10% на зубные ."
+       v-for="item in $store.state.promotions" :key="item.id"
+      :name="item.name"
+      :text="item.description"
+      :image="item.image"
     />
   </div>
 </template>
@@ -21,7 +15,7 @@
   /* две колонки одного размера */
   grid-template-columns: 1fr 1fr;
   /* хоть сколько рядов одного размера */
-  grid-template-rows: repeat(auto, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
   gap: 1rem;
 }
 

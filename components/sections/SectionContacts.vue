@@ -1,7 +1,9 @@
 <template>
   <div class="contacts">
-    <div class="contacts__photo">
-      Фото клиники
+    <div class="contacts__map">
+      <client-only>
+        <YandexMap :coords="coords" markerHint="Стоматология Life Mint" />
+      </client-only>
     </div>
     <div class="contacts__info">
       <div class="contacts__meta-container">
@@ -64,27 +66,48 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      coords: [56.846852, 53.224216]
+    };
+  }
+};
+</script>
+
 <style>
 .contacts {
   display: flex;
   width: 100%;
   height: 30rem;
+  /* ??? */
+  min-height: 550px;
 
   font-family: var(--font-default);
+}
+
+.ymap-container {
+  max-width: 100%;
+  height: 100%;
+  min-height: 50vh;
+}
+
+.ymaps-2-1-77-map {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 50vh !important;
 }
 
 .contacts > * {
   flex: 1 1 0;
 }
 
-.contacts__photo {
-  background: gray;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-right: 4rem;
+.contacts > *:first-child {
+  margin-right: 1.5rem;
+}
+.contacts > *:last-child {
+  margin-left: 1.5rem;
 }
 
 .contacts__info {
@@ -162,13 +185,13 @@ p.contacts__transport-category-name {
 
 @media screen and (max-width: 80em) {
   .contacts {
-    font-size: 15px;
+    /* font-size: 15px; */
   }
 }
 
 @media screen and (max-width: 70em) {
   .contacts {
-    font-size: 14px;
+    /* font-size: 14px; */
   }
 }
 
@@ -176,12 +199,13 @@ p.contacts__transport-category-name {
   .contacts {
     flex-direction: column;
     height: auto;
-    font-size: 16px;
+    /* font-size: 16px; */
   }
 
-  .contacts__photo {
-    min-height: 65vh;
-    margin: 0;
+  .contacts > *:first-child,
+  .contacts > *:last-child {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .contacts__info {

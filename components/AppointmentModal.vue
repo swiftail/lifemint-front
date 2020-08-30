@@ -7,15 +7,11 @@
 
       <form @submit.prevent="submit">
         <div class="form-group">
-
           <input
             type="text"
             name="phone"
             id="appointment-modal__phone"
-
-            placeholder="+7"
-            v-model.trim="phone"
-
+            placeholder="+7 (XXX) XXX XX-XX"
             ref="phone"
           />
         </div>
@@ -52,7 +48,7 @@
 
         <div class="appointment-modal__policy-notice">
           Нажимая на кнопку, вы даете согласие на обработку персональных данных
-          и соглашаетесь c политикой конфиденциальности
+          и соглашаетесь c <a href="/privacy.txt" target="_blank">политикой конфиденциальности</a>
         </div>
 
         <div>
@@ -74,24 +70,27 @@
 </template>
 
 <script>
-import { postAppointment } from "~/assets/js/api";
+import IMask from "imask";
 
 const defaultData = {
   context: "",
   name: "",
-  phone: "",
   comment: ""
 };
 
 export default {
   mounted() {
     window.AppointmentModal = this;
+    this.phoneMask = IMask(this.$refs["phone"], {
+      mask: "+{7} (000) 000 00-00"
+    });
   },
   data() {
     return Object.assign(
       {
         formErrors: [],
-        submitted: false
+        submitted: false,
+        phoneMask: null
       },
       defaultData
     );
@@ -100,7 +99,7 @@ export default {
     async submit() {
       let errors = [];
 
-      if (this.$refs["phone"].inputmask.unmaskedvalue().length < 10) {
+      if (this.phoneMask.unmaskedValue.length < 11) {
         errors.push("Пожалуйста, укажите свой номер телефона");
       }
 
@@ -120,11 +119,12 @@ export default {
 
       this.submitted = true;
 
-      let { name, phone, comment, context } = this;
+      let phone = this.phoneMask.value;
+      let { name, comment, context } = this;
 
       context = `${context} (Страница: ${window.location.pathname})`;
 
-      let result = await postAppointment({
+      let result = await this.$repo.postAppointment({
         name,
         phone,
         comment,
@@ -150,6 +150,9 @@ export default {
     setData(data) {
       this.formErrors = [];
       this.submitted = false;
+
+      if (data.phone) this.phoneMask.unmaskedValue = data.phone;
+      else this.phoneMask.unmaskedValue = "";
       Object.assign(this, defaultData, data);
     }
   }

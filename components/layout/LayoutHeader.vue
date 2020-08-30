@@ -3,7 +3,7 @@
     <div class="header__grid">
       <div class="header__info">
         <div class="header__logo">
-          <n-link to="/"> <ResponsiveImage :image="logoImage"/></n-link>
+          <n-link to="/"> <ResponsiveImage :image="logoImage" alt="Логотип Life Mint"/></n-link>
         </div>
 
         <div class="header__address">
@@ -60,32 +60,37 @@
         <nav>
           <ul class="header__nav-list">
             <li class="header__nav-services">
-              <a href="#" aria-haspopup="true">Услуги</a>
+              <AnchorLink anchor="services" aria-haspopup="true"
+                >Услуги</AnchorLink
+              >
               <div class="header__nav-submenu-container transitioned">
                 <ul class="header__nav-submenu" aria-label="submenu">
                   <li
                     v-for="service in $store.state.services"
                     :key="service.id"
+                    @click="handleSublistLiClick"
                   >
-                    <n-link :to="`/services/${service.slug}`">{{ service.name }}</n-link>
+                    <n-link :to="`/services/${service.slug}`">{{
+                      service.name
+                    }}</n-link>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="header__nav-price">
-              <a href>Стоимость</a>
+              <a :href="$api($store.state.pricelistLink)">Стоимость</a>
             </li>
             <li class="header__nav-promotions">
-              <a href>Акции</a>
+              <AnchorLink anchor="promotions">Акции</AnchorLink>
             </li>
             <li class="header__nav-reviews">
-              <a href>Отзывы</a>
+              <AnchorLink anchor="reviews">Отзывы</AnchorLink>
             </li>
             <li class="header__nav-about">
-              <a href>О нас</a>
+              <AnchorLink anchor="about">О нас</AnchorLink>
             </li>
             <li class="header__nav-concacts">
-              <a href>Контакты</a>
+              <n-link to="/contacts">Контакты</n-link>
             </li>
           </ul>
         </nav>
@@ -107,6 +112,10 @@ export default {
     };
   },
   methods: {
+    // god forgive me
+    handleSublistLiClick(e) {
+      e.target.tagName === "LI" && e.target.childNodes[0].click();
+    },
     toggleMenu() {
       this.$refs["nav"].classList.toggle("visible");
     }
@@ -185,7 +194,9 @@ export default {
 /* Main nav menu styling */
 .header__nav-list {
   display: grid;
-  grid-template-columns: repeat(36, 1fr);
+
+  grid-template-columns: repeat(6, min-content);
+
   gap: var(--header-nav-gap);
   margin: 0;
   padding: 0;
@@ -213,7 +224,7 @@ export default {
 
   /* Centering */
   left: 50%;
-  transform: translate(-30%);
+  transform: translateX(-30%);
 
   opacity: 0;
 
@@ -234,8 +245,7 @@ export default {
   opacity: 1;
 }
 
-.header__nav-list > li:hover > a,
-.header__nav-list > li:focus-within > a {
+.header__nav-list > li > a:hover {
   transition-property: color;
   transition: var(--standard-transition);
   color: var(--brand-color);
@@ -388,7 +398,7 @@ export default {
   transition-property: transform;
   transition: 0.3s ease-in-out;
 
-  transform: translate(var(--header-appointment-offset), 0);
+  transform: translateX(var(--header-appointment-offset));
 }
 .header__appointment svg {
   width: 1.4rem;
@@ -400,7 +410,7 @@ export default {
   color: var(--brand-color);
 }
 .header__appointment:hover > * {
-  transform: translate(0);
+  transform: translateX(0);
 }
 
 /* Common grid areas */
@@ -555,6 +565,10 @@ export default {
   }
 
   .header__nav-submenu-container {
+    width: fit-content;
+  }
+
+  .header__nav-services a {
     width: fit-content;
   }
 

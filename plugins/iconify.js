@@ -3,6 +3,7 @@ import IconifyIcon from '@iconify/vue';
 
 import bxMenu from "@iconify/icons-bx/bx-menu"
 import bxArrowRightAlt from "@iconify/icons-bx/bx-right-arrow-alt"
+import bxArrowUpAlt from "@iconify/icons-bx/bx-up-arrow-alt"
 
 import bxArrowRight from "@iconify/icons-bx/bxs-chevron-right"
 import bxArrowLeft from "@iconify/icons-bx/bxs-chevron-left"
@@ -24,6 +25,7 @@ import bxX from "@iconify/icons-bx/bx-x"
 
 IconifyIcon.addIcon('menu', bxMenu)
 IconifyIcon.addIcon('arrow-right', bxArrowRightAlt)
+IconifyIcon.addIcon('arrow-up', bxArrowUpAlt)
 
 IconifyIcon.addIcon('a11y-contrast', bxColorFill)
 IconifyIcon.addIcon('a11y-text', bxText)

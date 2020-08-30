@@ -1,7 +1,12 @@
 <template>
   <div class="expert">
     <div class="expert__photo">
-      <img loading="lazy" :src="$api(expert.photo.url)" />
+      <img
+        loading="lazy"
+        :src="$api(expert.photo.url)"
+        :alt="$api(expert.photo.alternativeText)"
+        :title="$api(expert.photo.caption)"
+      />
     </div>
     <div class="expert__meta">
       <span class="expert__name">
@@ -10,11 +15,7 @@
       <div class="expert__description">
         <Markdown :markdown="expert.description" />
       </div>
-      <ActionLink
-        text="Записаться"
-        icon="arrow-right"
-        @click="handleClick"
-      />
+      <ActionLink text="Записаться" icon="arrow-right" @click="handleClick" />
     </div>
   </div>
 </template>
@@ -42,7 +43,7 @@
 }
 
 .expert__name {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: var(--fw-semibold);
   line-height: 1.15;
   letter-spacing: 0.0875em;
@@ -78,12 +79,12 @@
   }
 
   .expert__photo {
-    min-height: 65vh;
+    min-height: 50vh;
   }
 
   .expert__meta {
     padding: 0;
-    font-size: 14px;
+    /* font-size: 14px; */
   }
 }
 </style>
@@ -95,7 +96,7 @@ export default {
     handleClick() {
       this.$showAppointment({
         context: `Эксперт: ${this.expert.name}`
-      })
+      });
     }
   }
 };

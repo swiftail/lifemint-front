@@ -1,10 +1,8 @@
 <template>
   <section class="masthead a11y-bg-image-container">
-    <ResponsiveImage :image="image" />
+    <ResponsiveImage :image="image" alt="Главный экран" />
     <div class="masthead__container">
-      <h1 class="masthead__heading">
-        {{ heading }}
-      </h1>
+      <h1 class="masthead__heading" v-html="heading"></h1>
       <p class="masthead__description">
         {{ description }}
       </p>
@@ -36,16 +34,18 @@ export default {
 
 <style>
 .masthead {
-  --gradient-start-bp: 23%;
-  --gradient-end-bp: 72%;
-  --gradient-start-color: rgb(251, 251, 251);
-  --gradient-end-color: rgba(251, 251, 251, 0.2);
+  --gradient-start-bp: 43%;
+  --gradient-end-bp: 100%;
+
+  --gradient-start-color: rgba(0, 0, 0, 0.541);
+  --gradient-end-color: rgba(0, 0, 0, 0.466);
 
   --container-width: 50%;
   --container-height: 40rem;
   --container-padding-v: 0;
 
-  --heading-size: 3.5rem;
+  --heading-size: 3.5em;
+  --accent-color: white;
 }
 
 .masthead {
@@ -53,13 +53,12 @@ export default {
     90deg,
     var(--gradient-start-color) 0%,
     var(--gradient-start-color) var(--gradient-start-bp),
-    transparent var(--gradient-end-bp)
+    var(--gradient-end-color) var(--gradient-end-bp)
   );
   position: relative;
 
   width: 100%;
 
-  /* TODO: Universal gap */
   padding: var(--container-padding-v) var(--content-gap);
   height: var(--container-height);
 }
@@ -89,19 +88,23 @@ export default {
   padding: 0;
   margin: 0;
 
-  font-family: var(--font-serif);
+  color: white;
+
+  font-family: var(--font-default);
   font-size: var(--heading-size);
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-semibold);
 }
 
 .masthead__description {
   padding: 0;
   margin: 0;
 
+  color: white;
+
   font-family: var(--font-default);
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: var(--fw-regular);
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: var(--fw-semibold);
 }
 
 /* Small desktop / large laptop */
@@ -116,35 +119,52 @@ export default {
 /* Laptop */
 @media screen and (max-width: 80em) {
   .masthead {
-    --gradient-start-bp: 40%;
-    --gradient-end-bp: 150%;
+    --gradient-start-bp: 20%;
+    --gradient-end-bp: 100%;
+    --gradient-start-color: #fafafa;
 
     --container-width: 70%;
-    --heading-size: 3rem;
+    --heading-size: 3em;
   }
 }
 
 /* Tablet */
 @media screen and (max-width: 64em) {
   .masthead {
-    --gradient-start-bp: 40%;
-    --gradient-end-bp: 270%;
+    --gradient-start-bp: 2%;
+    --gradient-end-bp: 100%;
 
-    --container-width: 60%;
-    --heading-size: 2.5rem;
+    --container-width: 80%;
+    --heading-size: 1.75em;
+
+    --gradient-start-color: rgba(0, 0, 0, 0.8);
+    --gradient-end-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .masthead__description,
+  .masthead__heading {
+    color: white;
+  }
+
+  .masthead__description {
+    font-weight: var(--fw-semibold);
   }
 }
 
 /* Mobile */
 @media screen and (max-width: 40em) {
   .masthead {
-    --gradient-start-bp: 20%;
-    --gradient-end-bp: 300%;
+    --gradient-start-bp: 0%;
+    --gradient-end-bp: 100%;
 
     --container-width: 100%;
     --container-height: auto;
     --container-padding-v: 5rem;
-    --heading-size: 2.5rem;
+
+    --gradient-start-color: rgba(0, 0, 0, 0.75);
+    --gradient-end-color: rgba(0, 0, 0, 0.65);
+
+    /* font-size: 14px; */
   }
 }
 </style>

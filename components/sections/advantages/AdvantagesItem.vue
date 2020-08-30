@@ -1,8 +1,8 @@
 <template>
   <div class="advantages-item">
-      <h4 class="advantages-item__header">
+      <h3 class="advantages-item__header">
         {{ advantage.name }}
-      </h4>
+      </h3>
       <p class="advantages-item__description">
         {{ advantage.description }}
       </p>

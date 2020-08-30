@@ -5,6 +5,8 @@
         <img
           loading="lazy"
           :src="$api($get(review, 'avatar.formats.thumbnail.url', ''))"
+          :alt="$api($get(review, 'avatar.alternativeText'))"
+          :title="$api($get(review, 'avatar.caption'))"
         />
       </div>
       <div class="review__meta">
@@ -122,9 +124,9 @@ export default {
   /* border: 4px solid white; */
 }
 
-@media screen and (max-width: 48em) {
+/* @media screen and (max-width: 48em) {
   .review {
     font-size: 14px;
   }
-}
+} */
 </style>

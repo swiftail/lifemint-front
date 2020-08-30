@@ -7,3 +7,11 @@ Vue.prototype.$error = function (str) {
   this.$store.commit('ADD_ERROR', str)
 }
 Vue.prototype.$get = get
+
+Vue.prototype.anchor = function (id) {
+  return {
+    'path': this.$route.path,
+    'hash': id
+  }
+}
+

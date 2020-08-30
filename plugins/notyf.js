@@ -3,7 +3,12 @@ import Vue from 'vue'
 
 if (process.client) {
   const { Notyf } = require('notyf')
-  const notyf = new Notyf();
+  const notyf = new Notyf({
+    position: {
+      x: 'left',
+      y: 'bottom',
+    }
+  });
   window.notyf = notyf;
   window.displayError = (str) => notyf.error({
     message: str,

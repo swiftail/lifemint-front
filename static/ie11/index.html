@@ -2,15 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>Document</title>
-
+    <title>Life Mint</title>
   </head>
+
   <body>
+    <div class="ie11">
+      <div class="ie11-image">
+        <img src="../logo.png" class="logo" />
+      </div>
+      <h1>
+        К сожалению, ваш браузер устарел. Чтобы&nbsp;ознакомиться с&nbsp;нашими
+        услугами, рекомендуем скачать современный браузер.
+      </h1>
 
-    
-
+      <p class="ie11-desc">
+        Стоматологическая клиника Life Mint оказывает широкий спектр
+        качественных услуг. Мы поддерживаем направления: лечение зубов и десен,
+        гигиена и профилактика, протезирование, имплантация и хирургия.
+      </p>
+      <h2>
+        Наши контакты:
+      </h2>
+      <div class="ie11-contacts">
+        <div>
+          <h3>г. Ижевск</h3>
+          <p>ул. Ломоносова, 2</p>
+        </div>
+        <div>
+          <h3>Режим работы</h3>
+          <p>
+            <strong>Будни:</strong> 8.00 - 20.00
+            <br />
+            <strong>Суббота:</strong> по записи
+            <br />
+            <strong>Воскресенье:</strong> выходной
+          </p>
+        </div>
+        <div>
+          <h3>Телефон</h3>
+          <p>8 3412 51 00 50</p>
+          <p>8 951 202-64-33</p>
+        </div>
+      </div>
+      <div class="ie11-browsers-text">
+        <p>Скачайте один из поддерживаемых браузеров, кликнув на иконку</p>
+      </div>
+      <div class="ie11-browsers">
+        <a target="_blank" href="https://www.google.com/intl/ru_ru/chrome/">
+          <img src="assets/chrome.svg" />
+        </a>
+        <a target="_blank" href="https://www.opera.com/ru">
+          <img src="assets/opera.png" />
+        </a>
+        <a target="_blank" href="https://www.mozilla.org/ru/firefox/new/">
+          <img src="assets/firefox.png" />
+        </a>
+        <a target="_blank" href="https://browser.yandex.ru/">
+          <img src="assets/yandex.png" />
+        </a>
+        <a href="https://www.microsoft.com/ru-ru/edge" target="_blank">
+          <img src="assets/edge.svg" />
+        </a>
+      </div>
+    </div>
   </body>
 </html>
+
+<style>
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    height: 100%;
+    font-family: sans-serif;
+  }
+
+  body {
+    position: relative;
+  }
+
+  h1 {
+    margin-top: 30px;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 52px;
+    color: #000000;
+    line-height: 3rem;
+  }
+
+  .ie11 {
+    text-align: left;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 900px;
+    max-width: 95%;
+  }
+
+  .ie11-desc {
+    margin: 30px 0;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    color: #545454;
+    width: 80%;
+  }
+
+  .ie11-browsers img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .ie11-browsers a {
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  .ie11-contacts div {
+    width: 200px;
+    margin: 30px 0;
+  }
+
+  .logo {
+    width: 220px;
+    height: 58px;
+  }
+
+  .ie11-browsers-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+</style>

@@ -1,22 +1,26 @@
 <template>
-  <div class="services-item">
+  <div class="services-item" @click="$router.push(`/services/${service.slug}`)">
     <div class="services-item__image-container">
       <ResponsiveImage
-      :src="$api($get(service, 'previewImage.url', ''))"
-      :placeholder="$api($get(service, 'previewImage.formats.thumbnail.url', ''))"
+        :src="$api($get(service, 'previewImage.url', ''))"
+        :placeholder="
+          $api($get(service, 'previewImage.formats.thumbnail.url', ''))
+        "
+        :alt="$api($get(service, 'previewImage.alternativeText'))"
+        :title="$api($get(service, 'previewImage.caption'))"
       />
     </div>
     <div class="services-item__wrapper">
-      <h4 class="services-item__header">{{ service.name }}</h4>
+      <h3 class="services-item__header">{{ service.name }}</h3>
       <p class="services-item__description">
         {{ service.shortDescription }}
       </p>
 
       <ActionLink
-      text="ПОДРОБНЕЕ"
-      icon="arrow-right"
-      :to="`/services/${service.slug}`"
-      black
+        text="ПОДРОБНЕЕ"
+        icon="arrow-right"
+        :to="`/services/${service.slug}`"
+        black
       />
     </div>
   </div>
@@ -32,6 +36,20 @@ export default {
 .services-item {
   font-family: var(--font-default);
   --image-height: 20rem;
+  padding: 1rem;
+  border-radius: 5px;
+
+  transition-property: border, background;
+  transition: var(--standard-transition);
+
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .services-item:hover {
+    background: white;
+     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .services-item__image-container {
@@ -64,6 +82,7 @@ export default {
   font-size: 1.2rem;
   margin: 0;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .services-item__description {

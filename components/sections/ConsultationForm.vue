@@ -1,7 +1,7 @@
 <template>
   <div class="consultation-form">
     <div class="consultation-form__heading a11y-bg-image-container">
-      <ResponsiveImage :image="headingImage" />
+      <ResponsiveImage :image="headingImage" alt="Фон формы записи на осмотр" />
 
       <div class="consultation-form__heading-text">
         <h2>Запишитесь на бесплатный осмотр</h2>
@@ -22,11 +22,6 @@
         <input
           type="text"
           placeholder="Телефон"
-          v-model.trim="phone"
-          v-mask="{
-            mask: '+7 (999) 999 99-99',
-            jitMasking: true
-          }"
           ref="phone"
         />
       </div>
@@ -39,21 +34,48 @@
       >
         <input type="text" placeholder="Имя" v-model.trim="name" />
       </div>
-      <button
+      <div
         class="
         consultation-form__action-container
         consultation-form__button-container
         consultation-form__button
-        button-reset
         action-link-container
       "
         @click="openPopup()"
       >
         <ActionLink text="Записаться" icon="arrow-right" @click="openPopup()" />
-      </button>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import images from "~/assets/js/images";
+
+export default {
+  methods: {
+    openPopup() {
+      this.$showAppointment({
+        context: "Записаться на бесплатную консультацию",
+        name: this.name,
+        phone: this.phoneMask.unmaskedValue
+      });
+    }
+  },
+  data() {
+    return {
+      headingImage: images.consultation,
+      name: "",
+      phoneMask: null
+    };
+  },
+  mounted() {
+    this.phoneMask = IMask(this.$refs["phone"], {
+      mask: "+{7} (000) 000 00-00"
+    });
+  }
+};
+</script>
 
 <style>
 .consultation-form {
@@ -257,26 +279,3 @@
   }
 }
 </style>
-
-<script>
-import images from "~/assets/js/images";
-
-export default {
-  methods: {
-    openPopup() {
-      this.$showAppointment({
-        context: "Записаться на бесплатную консультацию",
-        name: this.name,
-        phone: this.$refs["phone"].inputmask.unmaskedvalue()
-      });
-    }
-  },
-  data() {
-    return {
-      headingImage: images.consultation,
-      name: "",
-      phone: ""
-    };
-  }
-};
-</script>

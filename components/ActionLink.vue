@@ -44,7 +44,6 @@ export default {
 
 .action-link {
   font-family: var(--font-default);
-  font-size: 1rem;
   text-transform: uppercase;
   color: var(--color);
   font-weight: var(--fw-semibold);

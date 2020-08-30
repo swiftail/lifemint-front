@@ -204,17 +204,19 @@ body.__a11y-contrast * {
   transition: none !important;
 }
 
-body.__a11y-contrast * {
+/* These could be overriden */
+body.__a11y-contrast *:not([class^="ymaps"]) {
   background: transparent !important;
   color: white !important;
 }
-
-body.__a11y-contrast button:hover *,
-body.__a11y-contrast a:hover * {
+body.__a11y-contrast button:hover *:not([class^="ymaps"]),
+body.__a11y-contrast a:hover *:not([class^="ymaps"]) {
   background: black !important;
   color: white !important;
 }
 
+
+/* Styling for widget itself */
 body.__a11y-contrast .a11y__button[data-active="true"] * {
   color: blue !important;
 }
@@ -223,6 +225,7 @@ body.__a11y-contrast .a11y__button[data-inactive="true"] * {
   color: red !important;
 }
 
+/* Styling for size */
 body[data-a11y-size] {
   --universal-gap: 1rem;
   --content-gap: 1rem;

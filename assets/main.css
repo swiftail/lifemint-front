@@ -1,12 +1,3 @@
-/*
-* Adaptive: tablet
-*/
-@media screen and (max-width: 64em) {
-  :root {
-    --root-font-size: 14.4px;
-  }
-}
-
 svg[dataSize="xl"] {
   width: 2.5em;
   height: 2.5em;
@@ -23,10 +14,6 @@ svg[dataSize="md"] {
 svg[dataSize="sm"] {
   width: 0.7em;
   height: 0.7em;
-}
-
-.__ie11 svg * {
-  color: black !important;
 }
 
 /* Reset */
@@ -86,6 +73,21 @@ svg[dataSize="sm"] {
   --standard-transition: ease 0.2s;
 
   font-size: calc(var(--root-font-mult) * var(--root-font-size));
+}
+
+/*
+* Adaptive: tablet
+*/
+@media screen and (max-width: 64em) {
+  :root {
+    --root-font-size: 14.4px;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  :root {
+    --root-font-size: 12px;
+  }
 }
 
 .__ie11 svg {

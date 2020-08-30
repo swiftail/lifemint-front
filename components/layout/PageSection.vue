@@ -1,6 +1,7 @@
 <template>
   <section
     :class="['page-section', this.gray != undefined && 'page-section_gray', this.white != undefined && 'page-section_white']"
+    :id="id"
   >
     <div class="page-section__header" v-if="header || text">
       <PageSectionHeader :header="header" :text="text" />
@@ -31,6 +32,6 @@
 
 <script>
 export default {
-  props: ["header", "text", "gray", "white"],
+  props: ["header", "text", "gray", "white", "id"],
 };
 </script>

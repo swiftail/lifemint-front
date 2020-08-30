@@ -9,14 +9,17 @@
     <LayoutFooter />
 
     <AppointmentModal />
+
+    <client-only>
+      <ScrollToTopButton />
+    </client-only>
   </div>
 </template>
 
 <script>
+import checkAnchor from "~/assets/js/anchor";
+
 export default {
-  created() {
-    console.log(this.$store.state);
-  },
   mounted() {
     this.$store.state.delayedErrors.forEach(window.displayError);
   }
